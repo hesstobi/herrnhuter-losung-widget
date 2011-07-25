@@ -54,7 +54,7 @@ class Losung_Widget extends WP_Widget {
 		
 		#Losung einlesen
 		$datum=getdate();
-		$filename = get_option('siteurl') . "/wp-content/plugins/herrnhuter-losungen-widget/" ."losungen" . $datum[year] . ".xml";
+		$filename = dirname(__FILE__) ."/losungen" . $datum[year] . ".xml";
 		$xml = simplexml_load_file($filename);	
 		$Losung = $xml->Losungen[$datum[yday]];
 
