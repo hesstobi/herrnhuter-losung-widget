@@ -54,7 +54,7 @@ class Losung_Widget extends WP_Widget {
 		
 		#Losung einlesen
 		$datum=getdate();
-		$filename = get_option('siteurl') . "/wp-content/plugins/herrnhuter-losungen-widget/" ."losungen" . $datum[year] . ".xml";
+		$filename = dirname(__FILE__) ."/losungen" . $datum[year] . ".xml";
 		$xml = simplexml_load_file($filename);	
 		$Losung = $xml->Losungen[$datum[yday]];
 
@@ -66,14 +66,29 @@ class Losung_Widget extends WP_Widget {
 	
 		
 		#Losung ausgeben:
-		echo '<p class="losung-losungstext">' . $Losung->Losungstext . "</p>";
+		$text = $Losung->Losungstext;
+		$findN = preg_match('/\/(.*)\//',$text,$matches);
+		if ($findN==1) {
+			$replaceStr = '<span class="losung-losungseinleitung">' . $matches[1] . "</span>";
+			$text = preg_replace('/\/.*\//',$replaceStr,$text,1);
+		}
+		
+		echo '<p class="losung-losungstext">' . $text . "</p>";
 		echo '<p class="losung-versangabe">'; 
 		if ($showlink) echo '<a href="http://www.bibleserver.com/go.php?lang=de&bible=LUT&ref=' . $Losung->Losungsvers . '" target="_blank" title="Auf bibleserver.com nachschlagen">' . $Losung->Losungsvers . "</a>";
 		else echo $Losung->Losungsvers; 
 		echo "</p>";
 	
 		#Lehrtext ausgeben:
-		echo '<p class="losung-lehrtext">' . $Losung->Lehrtext . "</p>";
+		$text = $Losung->Lehrtext;
+		$findN = preg_match('/\/(.*)\//',$text,$matches);
+		if ($findN==1) {
+			$replaceStr = '<span class="losung-losungseinleitung">' . $matches[1] . "</span>";
+			$text = preg_replace('/\/.*\//',$replaceStr,$text,1);
+		}
+		
+		
+		echo '<p class="losung-lehrtext">' . $text . "</p>";
 		echo '<p class="losung-versangabe">';  
 		if ($showlink) echo '<a href="http://www.bibleserver.com/go.php?lang=de&bible=LUT&ref=' . $Losung->Lehrtextvers . '" target="_blank" title="Auf bibleserver.com nachschlagen">' . $Losung->Lehrtextvers . "</a>";
 		else echo $Losung->Lehrtextvers;
