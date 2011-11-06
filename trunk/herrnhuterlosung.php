@@ -2,9 +2,9 @@
 /*
 Plugin Name: HerrnhuterLosung
 Plugin URI: http://www.tobiashess.de/herrnhuter-losungen-widget/
-Description: Dieses Plugin erstellt ein Sidebar-Widget, was die heutige Losung der Herrnhuter Brüdergemeinde auf der Sidebar ausgibt.
+Description: Dieses Plugin erstellt ein Sidebar-Widget, was die heutige Losung der Herrnhuter Brüdergemeine auf der Sidebar ausgibt.
 Author: Tobias Heß
-Version: 1.3
+Version: 1.41
 Author URI: http://www.tobiashess.de
 */
 
@@ -18,8 +18,8 @@ it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 
-The Losungen of the Herrnhuter Brüdergemeinde are copyrighted. Owner of 
-copyright is the Evangelische Brüder-Unität – Herrnhuter Brüdergemeinde.
+The Losungen of the Herrnhuter Brüdergemeine are copyrighted. Owner of 
+copyright is the Evangelische Brüder-Unität – Herrnhuter Brüdergemeine.
 The biblical texts from the Lutheran Bible, revised texts in 1984, revised
 edition with a new spelling, subject to the copyright of the German Bible
 Society, Stuttgart.
@@ -40,7 +40,7 @@ This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 
 class Losung_Widget extends WP_Widget {
 	function Losung_Widget() {
-		$widget_ops = array('classname' => 'widget_losung', 'description' => 'Die heutige Losung der Herrnhuter Brüdergemeinde' );
+		$widget_ops = array('classname' => 'widget_losung', 'description' => 'Die heutige Losung der Herrnhuter Brüdergemeine' );
 		$this->WP_Widget('losung', 'Herrnhuter Losung', $widget_ops);
 	}
  
@@ -53,7 +53,7 @@ class Losung_Widget extends WP_Widget {
 	
 		
 		#Losung einlesen
-		$datum=getdate();
+		$datum = getdate();
 		$filename = dirname(__FILE__) ."/losungen" . $datum[year] . ".xml";
 		$xml = simplexml_load_file($filename);	
 		$Losung = $xml->Losungen[$datum[yday]];
@@ -67,11 +67,7 @@ class Losung_Widget extends WP_Widget {
 		
 		#Losung ausgeben:
 		$text = $Losung->Losungstext;
-		$findN = preg_match('/\/(.*)\//',$text,$matches);
-		if ($findN==1) {
-			$replaceStr = '<span class="losung-losungseinleitung">' . $matches[1] . "</span>";
-			$text = preg_replace('/\/.*\//',$replaceStr,$text,1);
-		}
+		$text = preg_replace('#\/(.*:)\/#', '<span class="losung-losungseinleitung">$1</span>', $text, 1);
 		
 		echo '<p class="losung-losungstext">' . $text . "</p>";
 		echo '<p class="losung-versangabe">'; 
@@ -81,12 +77,8 @@ class Losung_Widget extends WP_Widget {
 	
 		#Lehrtext ausgeben:
 		$text = $Losung->Lehrtext;
-		$findN = preg_match('/\/(.*)\//',$text,$matches);
-		if ($findN==1) {
-			$replaceStr = '<span class="losung-losungseinleitung">' . $matches[1] . "</span>";
-			$text = preg_replace('/\/.*\//',$replaceStr,$text,1);
-		}
-		
+		$text = preg_replace('#\/(.*:)\/#', '<span class="losung-losungseinleitung">$1</span>', $text, 1);
+				
 		
 		echo '<p class="losung-lehrtext">' . $text . "</p>";
 		echo '<p class="losung-versangabe">';  
@@ -95,7 +87,7 @@ class Losung_Widget extends WP_Widget {
 		echo "</p>";
 		
 		#Copyright ausgeben
-		if ($showcopy) echo '<p class="losung-copy"><a href="http://www.ebu.de" target="_blank" title="Evangelische Br&uuml;der-Unit&auml;t">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeinde</a> <br> <a href="http://www.losungen.de" target="_blank" title="www.losungen.de">Weitere Informationen finden sie hier</a></p>';
+		if ($showcopy) echo '<p class="losung-copy"><a href="http://www.ebu.de" target="_blank" title="Evangelische Br&uuml;der-Unit&auml;t">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeine</a> <br> <a href="http://www.losungen.de" target="_blank" title="www.losungen.de">Weitere Informationen finden Sie hier</a></p>';
        
 		echo $after_widget;
 
