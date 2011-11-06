@@ -68,6 +68,10 @@ Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwend
 
 == Changelog ==
 
+= 1.41 =
+* kleine Verbesserungen am Quellcode, vielen Dank Benjamin!
+* Die Losungen für 2012
+
 = 1.4 =
 * Problem mit xml-file load auf einigen Servern behoben. Vielen Danke Benjamin für den Hinweis
 * Die Einleitenden Worte der Losung (wie z.B. Jesus spircht:) werden nun ohne die '/' angezeigt und können über die css-Klasse losung-losungseinleitung formatiert werden
