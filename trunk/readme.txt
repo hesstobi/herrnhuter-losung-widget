@@ -1,20 +1,27 @@
 === Herrnhuter Losung ===
-Contributors: hesstobi
+Contributors: hesstobi, benjamin4
 Donate link: http://www.lutherkirchgemeinde-radebeul.de/
-Tags: deutsch, german, bible, Bibel, daily, täglich 
+Tags: deutsch, german, bible, Bibel, daily, täglich
 Requires at least: 2.8
-Tested up to: 3.05
-Stable tag: 1.4
+Tested up to: 3.3.1
+Stable tag: 1.42
 
-Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeinde in Deutsch als Widget an der Sidebar an.
+Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeine in Deutsch als Widget an der Sidebar an.
 
 == Description ==
 
-Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeinde in Deutsch als Widget an der Sidebar an, mit je einen Vers aus dem alten und dem neuen Testament. Aus lizenzrechtlichen Gründen fehlt der Liedvers bzw. das Gebet.
+Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeine in Deutsch als Widget an der Sidebar an, mit je einen Vers aus dem alten und dem neuen Testament. Aus lizenzrechtlichen Gründen fehlt der Liedvers bzw. das Gebet.
 
-*Die Losungen gibt es seit 1728. Für jeden Tag zieht die Herrnhuter Brüdergemeinde einen Vers aus dem alten Testament der Bibel, dazu wird eine Vers aus dem neuen Testament und ein sowie ein Liedvers oder ein Gebet auswählt. Die Losungen verbinden Menschen aus verschiedenen Konfessionen und mit unterschiedlicher Frömmigkeit.*
+*Die Losungen gibt es seit 1728. Für jeden Tag zieht die Herrnhuter Brüdergemeine einen Vers aus dem alten Testament der Bibel, dazu wird eine Vers aus dem neuen Testament und ein sowie ein Liedvers oder ein Gebet auswählt. Die Losungen verbinden Menschen aus verschiedenen Konfessionen und mit unterschiedlicher Frömmigkeit.*
 
-*Weiter Informationen gibt es unter.  [losungen.de](http://www.losungen.de/ "Offizelle Webseiter der Herrnhuter Losungen")*
+*Weiter Informationen gibt es unter: [losungen.de](http://www.losungen.de/ "Offizelle Webseiter der Herrnhuter Losungen")*
+
+Auszug der Lizenzbedingungen:
+"Auf Internet-Seiten, die auch kommerziellen Zwecken dienen, sowie in Software, die entgeltlich
+angeboten wird, dürfen die Losungen nicht verwendet werden. Gleiches gilt für Internetseiten und
+Softwareprogramme deren Inhalt geeignet ist, das Ansehen der Evangelischen Kirche und der
+Evangelischen Brüder-Unität - Herrnhuter Brüdergemeine herabzusetzen. Anwendungen außerhalb dieser Nutzungsbedingungen bedürfen einer gesonderten Vereinbarung mit der Evangelischen Brüder-Unität – Herrnhuter Brüdergemeine."
+(Diese Bedingungen gelten für die XML-Datei, die die Losungen enthält. Das Wordpress-Plugin ist unabhängig davon unter GPLv2 lizenziert.)
 
 Das Design des Widgets kann über CSS gesteuert werden. Dafür sind für den Losungstext, den Lehrtext, die Versangaben und das Copyright CSS Klassen definiert. Für eine genau Dokumentation der CSS Klassen siehe *Installation*.
 
@@ -59,7 +66,7 @@ Damit wird der Losungstext und der Lehrtext fett gedruckt und das Copyright ist 
 
 = Ich bekomme folgende Fehlermeldung: Fatal error: Call to undefined function: simplexml_load_file() =
 
-Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwendet. Für php4 gibt es leider keinen so einfachen xml-Parser
+Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwendet. Für php4 gibt es leider keinen so einfachen xml-Parser.
 
 == Screenshots ==
 
@@ -68,13 +75,17 @@ Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwend
 
 == Changelog ==
 
+= 1.42 =
+* XHTML Compability
+* Fix: Hervorhebungen im Losungstext mit # # werden jetzt kursiv angezeigt
+
 = 1.41 =
 * kleine Verbesserungen am Quellcode, vielen Dank Benjamin!
 * Die Losungen für 2012
 
 = 1.4 =
 * Problem mit xml-file load auf einigen Servern behoben. Vielen Danke Benjamin für den Hinweis
-* Die Einleitenden Worte der Losung (wie z.B. Jesus spircht:) werden nun ohne die '/' angezeigt und können über die css-Klasse losung-losungseinleitung formatiert werden
+* Die Einleitenden Worte der Losung (wie z.B. Jesus spricht:) werden nun ohne die '/' angezeigt und können über die css-Klasse losung-losungseinleitung formatiert werden
 
 = 1.3 =
 * Anpassung für das Wordpress Plugin Directory
@@ -88,12 +99,15 @@ Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwend
 
 == Upgrade Notice ==
 
+= 1.42 =
+Hervorhebungen über # # wird nun auch kursiv dargestellt.
+
 = 1.3 =
 Diese Version ist die erste die durch das Wordpress Plugin Directory gehostet wird
 
 = 1.2 =
-Diese Version ergäntzt die Losungen für 2011 und es sind nun erweiterte Anpassungen über CSS möglich.
+Diese Version ergänzt die Losungen für 2011 und es sind nun erweiterte Anpassungen über CSS möglich.
 
 = 1.11 =
-Diese Version ergäntzt die Losungen für 2010.
+Diese Version ergänzt die Losungen für 2010.
 
