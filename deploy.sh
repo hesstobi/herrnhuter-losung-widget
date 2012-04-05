@@ -25,6 +25,10 @@ echo
 echo ".........................................."
 echo 
 
+echo "Update Github Readme"
+rm $GITPATH/README.txt
+cp $GITPATH/trunk/readme.txt $GITPATH/README.txt
+
 # Check version in readme.txt is the same as plugin file
 NEWVERSION1=`grep "^Stable tag" $GITPATH/trunk/readme.txt | awk -F' ' '{print $3}'`
 echo "readme version: $NEWVERSION1"
