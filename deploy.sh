@@ -72,7 +72,7 @@ svn copy trunk/ tags/$NEWVERSION1/
 cd $SVNPATH/tags/$NEWVERSION1
 svn commit --username=$SVNUSER -m "Tagging version $NEWVERSION1"
 
-echo "Removing temporary directory $SVNPATH"
-rm -fr $SVNPATH/
+# echo "Removing temporary directory $SVNPATH"
+# rm -fr $SVNPATH/
 
 echo "*** FIN ***"
