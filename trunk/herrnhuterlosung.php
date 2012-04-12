@@ -4,7 +4,7 @@ Plugin Name: HerrnhuterLosung
 Plugin URI: http://www.tobiashess.de/herrnhuter-losungen-widget/
 Description: Dieses Plugin erstellt ein Sidebar-Widget, was die heutige Losung der Herrnhuter Brüdergemeine auf der Sidebar ausgibt.
 Author: Tobias Heß
-Version: 1.41
+Version: 1.42
 Author URI: http://www.tobiashess.de
 */
 
@@ -54,44 +54,59 @@ class Losung_Widget extends WP_Widget {
 		
 		#Losung einlesen
 		$datum = getdate();
-		$filename = dirname(__FILE__) ."/losungen" . $datum[year] . ".xml";
+		$filename = dirname(__FILE__) ."/losungen" . $datum['year'] . ".xml";
 		$xml = simplexml_load_file($filename);	
-		$Losung = $xml->Losungen[$datum[yday]];
+		$Losung = $xml->Losungen[$datum['yday']];
 
 			
 		echo $before_widget;
 		#Titel ausgeben
 		if ( $title )
-		echo $before_title . $title . $after_title;
+			echo $before_title . $title . $after_title;
 	
 		
 		#Losung ausgeben:
-		$text = $Losung->Losungstext;
-		$text = preg_replace('#\/(.*:)\/#', '<span class="losung-losungseinleitung">$1</span>', $text, 1);
-		
-		echo '<p class="losung-losungstext">' . $text . "</p>";
-		echo '<p class="losung-versangabe">'; 
-		if ($showlink) echo '<a href="http://www.bibleserver.com/go.php?lang=de&bible=LUT&ref=' . $Losung->Losungsvers . '" target="_blank" title="Auf bibleserver.com nachschlagen">' . $Losung->Losungsvers . "</a>";
-		else echo $Losung->Losungsvers; 
-		echo "</p>";
+		$options = array('showlink' => $showlink);
+		$options['css'] = 'losung-losungstext';
+		$this->showBibleVers($Losung->Losungstext, $Losung->Losungsvers, $options);
 	
 		#Lehrtext ausgeben:
-		$text = $Losung->Lehrtext;
-		$text = preg_replace('#\/(.*:)\/#', '<span class="losung-losungseinleitung">$1</span>', $text, 1);
-				
-		
-		echo '<p class="losung-lehrtext">' . $text . "</p>";
-		echo '<p class="losung-versangabe">';  
-		if ($showlink) echo '<a href="http://www.bibleserver.com/go.php?lang=de&bible=LUT&ref=' . $Losung->Lehrtextvers . '" target="_blank" title="Auf bibleserver.com nachschlagen">' . $Losung->Lehrtextvers . "</a>";
-		else echo $Losung->Lehrtextvers;
-		echo "</p>";
+		$options['css'] = 'losung-lehrtext';
+		$this->showBibleVers($Losung->Lehrtext, $Losung->Lehrtextvers, $options);
 		
 		#Copyright ausgeben
-		if ($showcopy) echo '<p class="losung-copy"><a href="http://www.ebu.de" target="_blank" title="Evangelische Br&uuml;der-Unit&auml;t">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeine</a> <br> <a href="http://www.losungen.de" target="_blank" title="www.losungen.de">Weitere Informationen finden Sie hier</a></p>';
+		if ($showcopy)
+			echo '<p class="losung-copy"><a href="http://www.ebu.de" target="_blank" title="Evangelische Br&uuml;der-Unit&auml;t">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeine</a> <br> <a href="http://www.losungen.de" target="_blank" title="www.losungen.de">Weitere Informationen finden Sie hier</a></p>';
        
 		echo $after_widget;
-
+	}
+	
+	function showBibleVers($text, $vers, $options = array())
+	{
+		$defaults = array(
+			'css' => 'losung',
+			'showlink' => true
+		);
+		$options = $options + $defaults;
+	
+		echo '<p class="' . $options['css'] . '">' . $this->applyFormat($text) . "</p>";
 		
+		echo '<p class="losung-versangabe">'; 
+		
+		if ($options['showlink'])
+			echo '<a href="http://www.bibleserver.com/go.php?lang=de&amp;bible=LUT&amp;ref=' . urlencode($vers) . '" target="_blank" title="Auf bibleserver.com nachschlagen">' . $vers . "</a>";
+		else 
+			echo $vers; 
+		
+		echo "</p>";	
+	}
+	
+	function applyFormat($text)
+	{
+		$text = preg_replace('#/(.*?:)/#', '<span class="losung-losungseinleitung">$1</span>', $text, 1);
+		$text = preg_replace('/#(.*?)#/', '<em>$1</em>', $text);
+		
+		return $text;
 	}
  
 	function update($new_instance, $old_instance) {
