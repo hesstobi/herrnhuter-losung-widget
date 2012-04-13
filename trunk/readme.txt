@@ -4,7 +4,7 @@ Donate link: http://www.lutherkirchgemeinde-radebeul.de/
 Tags: deutsch, german, bible, Bibel, daily, täglich
 Requires at least: 2.8
 Tested up to: 3.3.1
-Stable tag: 1.42
+Stable tag: 1.43
 
 Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeine in Deutsch als Widget an der Sidebar an.
 
@@ -21,7 +21,7 @@ Auszug der Lizenzbedingungen:
 angeboten wird, dürfen die Losungen nicht verwendet werden. Gleiches gilt für Internetseiten und
 Softwareprogramme deren Inhalt geeignet ist, das Ansehen der Evangelischen Kirche und der
 Evangelischen Brüder-Unität - Herrnhuter Brüdergemeine herabzusetzen. Anwendungen außerhalb dieser Nutzungsbedingungen bedürfen einer gesonderten Vereinbarung mit der Evangelischen Brüder-Unität – Herrnhuter Brüdergemeine."
-(Diese Bedingungen gelten für die XML-Datei, die die Losungen enthält. Das Wordpress-Plugin ist unabhängig davon unter GPLv2 lizenziert.)
+(Diese Bedingungen gelten für die beigelegte XML-Datei, die die Losungen enthält. Das Wordpress-Plugin ist unabhängig davon unter GPLv2 or later lizenziert.)
 
 Das Design des Widgets kann über CSS gesteuert werden. Dafür sind für den Losungstext, den Lehrtext, die Versangaben und das Copyright CSS Klassen definiert. Für eine genau Dokumentation der CSS Klassen siehe *Installation*.
 
@@ -44,7 +44,7 @@ Zur Anpassung des Designs können folgende CSS Klassen verwendet werden:
 
 * Losungstext: *losung-losungstext*
 * Lehrtext: *losung-lehrtext*
-* Einleitende Worte: *losung-losungseinleitung*  (z.B. Jesus Christus Spricht)
+* Einleitende Worte: *losung-losungseinleitung*  (z.B. Jesus Christus spricht)
 * Versangaben: *losung-versangabe*
 * Copyright: *losung-copy*
 
@@ -74,6 +74,10 @@ Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwend
 2. Die Einstellungen des Widgets
 
 == Changelog ==
+
+= 1.43 =
+* Update Screenshots
+* Neue CSS-Klasse losung-text für beide Bibelverse
 
 = 1.42 =
 * XHTML Compability

@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: HerrnhuterLosung
+Plugin Name: Herrnhuter Losung
 Plugin URI: http://www.tobiashess.de/herrnhuter-losungen-widget/
 Description: Dieses Plugin erstellt ein Sidebar-Widget, was die heutige Losung der Herrnhuter Brüdergemeine auf der Sidebar ausgibt.
-Author: Tobias Heß
-Version: 1.42
+Author: Tobias Heß, Benjamin Pick
+Version: 1.43
 Author URI: http://www.tobiashess.de
 */
 
@@ -18,7 +18,7 @@ it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 
-The Losungen of the Herrnhuter Brüdergemeine are copyrighted. Owner of 
+The Losungen of the Herrnhuter Brüdergemeine are copyrighted. Owner of
 copyright is the Evangelische Brüder-Unität – Herrnhuter Brüdergemeine.
 The biblical texts from the Lutheran Bible, revised texts in 1984, revised
 edition with a new spelling, subject to the copyright of the German Bible
@@ -39,23 +39,24 @@ This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 */
 
 class Losung_Widget extends WP_Widget {
-	function Losung_Widget() {
-		$widget_ops = array('classname' => 'widget_losung', 'description' => 'Die heutige Losung der Herrnhuter Brüdergemeine' );
-		$this->WP_Widget('losung', 'Herrnhuter Losung', $widget_ops);
+	function __construct() {
+		$widget_ops = array(
+			'classname' => 'widget_losung',
+			'description' => 'Die heutige Losung der Herrnhuter Brüdergemeine'
+		);
+		parent::__construct('losung', 'Herrnhuter Losung', $widget_ops);
 	}
- 
+
 	function widget($args, $instance) {
 		extract($args);
 		$title = apply_filters('widget_title', $instance['title'] );
 		$showcopy = isset( $instance['showcopy'] ) ? $instance['showcopy'] : false;
 		$showlink = isset( $instance['showlink'] ) ? $instance['showlink'] : false;
 		
-	
-		
 		#Losung einlesen
 		$datum = getdate();
 		$filename = dirname(__FILE__) ."/losungen" . $datum['year'] . ".xml";
-		$xml = simplexml_load_file($filename);	
+		$xml = simplexml_load_file($filename);
 		$Losung = $xml->Losungen[$datum['yday']];
 
 			
@@ -89,16 +90,16 @@ class Losung_Widget extends WP_Widget {
 		);
 		$options = $options + $defaults;
 	
-		echo '<p class="' . $options['css'] . '">' . $this->applyFormat($text) . "</p>";
+		echo '<p class="losung-text ' . $options['css'] . '">' . $this->applyFormat($text) . "</p>";
 		
-		echo '<p class="losung-versangabe">'; 
+		echo '<p class="losung-versangabe">';
 		
 		if ($options['showlink'])
 			echo '<a href="http://www.bibleserver.com/go.php?lang=de&amp;bible=LUT&amp;ref=' . urlencode($vers) . '" target="_blank" title="Auf bibleserver.com nachschlagen">' . $vers . "</a>";
-		else 
-			echo $vers; 
+		else
+			echo $vers;
 		
-		echo "</p>";	
+		echo "</p>";
 	}
 	
 	function applyFormat($text)
@@ -130,27 +131,26 @@ class Losung_Widget extends WP_Widget {
 		
 		echo '<p>';
 		echo '<input class="checkbox" type="checkbox" ';
-		if ($instance['showlink']) echo 'checked="checked" ';
+		if ($instance['showlink'])
+			echo 'checked="checked" ';
 		echo 'id="' . $this->get_field_id( 'showlink' ) . '" name="' .  $this->get_field_name( 'showlink' ) . '" />';
 		echo '<label for="' . $this->get_field_id( 'showlink' ) . '"> Zeige Link zu Bibleserver.com</label>';
 		echo '</p>';
 		
 		echo '<p>';
 		echo '<input class="checkbox" type="checkbox" ';
-		if ($instance['showcopy']) echo 'checked="checked" ';
+		if ($instance['showcopy'])
+			echo 'checked="checked" ';
 		echo 'id="' . $this->get_field_id( 'showcopy' ) . '" name="' .  $this->get_field_name( 'showcopy' ) . '" />';
 		echo '<label for="' . $this->get_field_id( 'showcopy' ) . '"> Zeige Copyright</label>';
 		echo '</p>';
-		
-		}
-
-
+	}
 }
 
- #Register Losung widget.
- function LosungInit() {
+function LosungInit() {
   register_widget('Losung_Widget');
-  }
-  add_action('widgets_init', 'LosungInit');
+}
+add_action('widgets_init', 'LosungInit');
+
 
 ?>
