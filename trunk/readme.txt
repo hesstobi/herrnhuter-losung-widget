@@ -75,6 +75,8 @@ Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwend
 
 == Changelog ==
 
+* Zeige ein Warnung, falls XML-Datei nicht existiert oder nicht den gesuchten Inhalt hat.
+
 = 1.43 =
 * Update Screenshots
 * Neue CSS-Klasse losung-text für beide Bibelverse

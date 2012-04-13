@@ -48,24 +48,40 @@ class Losung_Widget extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
-		extract($args);
 		$title = apply_filters('widget_title', $instance['title'] );
+		
 		$showcopy = isset( $instance['showcopy'] ) ? $instance['showcopy'] : false;
 		$showlink = isset( $instance['showlink'] ) ? $instance['showlink'] : false;
 		
-		#Losung einlesen
-		$datum = getdate();
-		$filename = dirname(__FILE__) ."/losungen" . $datum['year'] . ".xml";
-		$xml = simplexml_load_file($filename);
-		$Losung = $xml->Losungen[$datum['yday']];
-
-			
-		echo $before_widget;
+		echo $args['before_widget'];
+		
 		#Titel ausgeben
 		if ( $title )
-			echo $before_title . $title . $after_title;
-	
+			echo $args['before_title'] . $title . $args['after_title'];
 		
+		$this->showLosungen(getdate(), $showlink, $showcopy);
+
+		echo $args['after_widget'];
+	}
+	
+	function showLosungen($datum, $showlink, $showcopy)
+	{
+		#Losung einlesen
+		$filename = dirname(__FILE__) ."/losungen" . $datum['year'] . ".xml";
+		if (!file_exists($filename))
+		{
+			echo "<p>Die Losungen von diesem Jahr sind noch nicht da. Ein Update k&ouml;nnte helfen.</p>";
+			return;
+		}
+		
+		$xml = simplexml_load_file($filename);
+		$Losung = $xml->Losungen[ $datum['yday'] ];
+		if (is_null($Losung))
+		{
+			echo "<p>Komischer Fehler: Konnte keine Losungsverse für diesen Tag finden.</p>";
+			return;
+		}
+
 		#Losung ausgeben:
 		$options = array('showlink' => $showlink);
 		$options['css'] = 'losung-losungstext';
@@ -78,8 +94,6 @@ class Losung_Widget extends WP_Widget {
 		#Copyright ausgeben
 		if ($showcopy)
 			echo '<p class="losung-copy"><a href="http://www.ebu.de" target="_blank" title="Evangelische Br&uuml;der-Unit&auml;t">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeine</a> <br> <a href="http://www.losungen.de" target="_blank" title="www.losungen.de">Weitere Informationen finden Sie hier</a></p>';
-       
-		echo $after_widget;
 	}
 	
 	function showBibleVers($text, $vers, $options = array())
