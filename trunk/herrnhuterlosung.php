@@ -6,6 +6,8 @@ Description: Dieses Plugin erstellt ein Sidebar-Widget, was die heutige Losung d
 Author: Tobias Heß, Benjamin Pick
 Version: 1.43
 Author URI: http://www.tobiashess.de
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 /*
