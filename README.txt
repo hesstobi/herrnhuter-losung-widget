@@ -3,8 +3,10 @@ Contributors: hesstobi, benjamin4
 Donate link: http://www.lutherkirchgemeinde-radebeul.de/
 Tags: deutsch, german, bible, Bibel, daily, täglich
 Requires at least: 2.8
-Tested up to: 3.3.1
-Stable tag: 1.43
+Tested up to: 3.4.1
+Stable tag: 1.44
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeine in Deutsch als Widget an der Sidebar an.
 
@@ -16,12 +18,15 @@ Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeine in Deutsch a
 
 *Weiter Informationen gibt es unter: [losungen.de](http://www.losungen.de/ "Offizelle Webseiter der Herrnhuter Losungen")*
 
-Auszug der Lizenzbedingungen:
+### Auszug der Lizenzbedingungen:	
 "Auf Internet-Seiten, die auch kommerziellen Zwecken dienen, sowie in Software, die entgeltlich
 angeboten wird, dürfen die Losungen nicht verwendet werden. Gleiches gilt für Internetseiten und
 Softwareprogramme deren Inhalt geeignet ist, das Ansehen der Evangelischen Kirche und der
 Evangelischen Brüder-Unität - Herrnhuter Brüdergemeine herabzusetzen. Anwendungen außerhalb dieser Nutzungsbedingungen bedürfen einer gesonderten Vereinbarung mit der Evangelischen Brüder-Unität – Herrnhuter Brüdergemeine."
-(Diese Bedingungen gelten für die beigelegte XML-Datei, die die Losungen enthält. Das Wordpress-Plugin ist unabhängig davon unter GPLv2 or later lizenziert.)
+
+(Diese Bedingungen gelten für die beigelegte XML-Datei, die die Losungen enthält. Das Wordpress-Plugin ist unabhängig davon unter "GPLv2 or later" lizenziert.)
+
+### Technische Details
 
 Das Design des Widgets kann über CSS gesteuert werden. Dafür sind für den Losungstext, den Lehrtext, die Versangaben und das Copyright CSS Klassen definiert. Für eine genau Dokumentation der CSS Klassen siehe *Installation*.
 
@@ -29,7 +34,7 @@ Den Titel des Widgets, die Verlinkung zu [bibleserver.com](http://www.bibleserve
 
 
 
-### Voraussetungen
+### Voraussetzungen
 
 * Wordpress > 2.8
 * PHP > 5.0
@@ -38,12 +43,12 @@ Den Titel des Widgets, die Verlinkung zu [bibleserver.com](http://www.bibleserve
 
 1. Lade die Zip-Datei in dein Pluginsverzeichnis `/wp-content/plugins/` und entpacke es
 1. Aktiviere das Plugin im 'Plugins' Menü in WordPress
-1. Füge das Widget im etsprechenden Menü zu deiner Seitenleiste hinzu
+1. Füge das Widget im entsprechenden Menü zu deiner Seitenleiste hinzu
 
 Zur Anpassung des Designs können folgende CSS Klassen verwendet werden:
 
-* Losungstext: *losung-losungstext*
-* Lehrtext: *losung-lehrtext*
+* Losungstext: *losung-losungstext* und *losung-text*
+* Lehrtext: *losung-lehrtext* und *losung-text*
 * Einleitende Worte: *losung-losungseinleitung*  (z.B. Jesus Christus spricht)
 * Versangaben: *losung-versangabe*
 * Copyright: *losung-copy*
@@ -54,8 +59,7 @@ Zur Anpassung des Designs können folgende CSS Klassen verwendet werden:
 
 Als Beispiel könnt ihr folgendes in eurer CSS Stylesheet schreiben:
 
-	#sidebar .losung-losungstext {font-weight: bold;}
-	#sidebar .losung-lehrtext {font-weight: bold;}
+	#sidebar .losung-text {margin-bottom:0; font-weight: bold;}
 	#sidebar .losung-losungseinleitung {font-style:italic; font-weight: normal;}
 	#sidebar .losung-copy {font-size: 0.7em; text-align: right;}
 	
@@ -68,12 +72,22 @@ Damit wird der Losungstext und der Lehrtext fett gedruckt und das Copyright ist 
 
 Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwendet. Für php4 gibt es leider keinen so einfachen xml-Parser.
 
+= Wo kann ich Verbesserungen am Code einreichen? =
+
+Immer gerne! Am besten auf Github:
+https://github.com/hesstobi/herrnhuter-losung-widget
+
 == Screenshots ==
 
 1. Das Widgets in Aktion
 2. Die Einstellungen des Widgets
 
 == Changelog ==
+
+* Zeige ein Warnung, falls XML-Datei nicht existiert oder nicht den gesuchten Inhalt hat.
+
+= 1.44 =
+* Losungen für 2013
 
 = 1.43 =
 * Update Screenshots
@@ -96,12 +110,15 @@ Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwend
 
 = 1.2 =
 * Losungen für 2011 hinzugefügt
-* Losungstext, Lehrtext, Versangaben und Copyright sind nun einzeln über CSS anschprechbar
+* Losungstext, Lehrtext, Versangaben und Copyright sind nun einzeln über CSS ansprechbar
 
 = 1.11 =
 * Losungen für 2010 hinzugefügt
 
 == Upgrade Notice ==
+
+= 1.44 =
+Diese Version ergänzt die Losungen für 2013.
 
 = 1.42 =
 Hervorhebungen über # # wird nun auch kursiv dargestellt.
