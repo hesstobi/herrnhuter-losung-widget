@@ -77,6 +77,9 @@ Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwend
 Immer gerne! Am besten auf Github:
 https://github.com/hesstobi/herrnhuter-losung-widget
 
+Geplante Verbesserungen (irgendwann):
+* Lade die losungen.xml direkt von losungen.de herunter, falls die aktuelle XML-Datei nicht gefunden werden kann. Auf diese Weise müsste ich nicht mehr jährlich ein Update herausbringen.
+
 == Screenshots ==
 
 1. Das Widgets in Aktion
@@ -84,10 +87,12 @@ https://github.com/hesstobi/herrnhuter-losung-widget
 
 == Changelog ==
 
-* Zeige ein Warnung, falls XML-Datei nicht existiert oder nicht den gesuchten Inhalt hat.
+= 1.45 =
+* Losungen für 2014
 
 = 1.44 =
 * Losungen für 2013
+* Zeige ein Warnung, falls XML-Datei nicht existiert oder nicht den gesuchten Inhalt hat.
 
 = 1.43 =
 * Update Screenshots
@@ -116,6 +121,9 @@ https://github.com/hesstobi/herrnhuter-losung-widget
 * Losungen für 2010 hinzugefügt
 
 == Upgrade Notice ==
+
+= 1.45 =
+Diese Version ergänzt die Losungen für 2014.
 
 = 1.44 =
 Diese Version ergänzt die Losungen für 2013.

@@ -84,10 +84,10 @@ https://github.com/hesstobi/herrnhuter-losung-widget
 
 == Changelog ==
 
-* Zeige ein Warnung, falls XML-Datei nicht existiert oder nicht den gesuchten Inhalt hat.
 
 = 1.44 =
 * Losungen für 2013
+* Zeige ein Warnung, falls XML-Datei nicht existiert oder nicht den gesuchten Inhalt hat.
 
 = 1.43 =
 * Update Screenshots

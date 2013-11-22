@@ -50,6 +50,12 @@ class Losung_Widget extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
+		if (!function_exists('simplexml_load_file'))
+		{
+			echo "<p>Das Losung-Widget ben&ouml;tigt PHP 5 (simplexml fehlt).</p>";
+			return;
+		}
+	
 		$title = apply_filters('widget_title', $instance['title'] );
 		
 		$showcopy = isset( $instance['showcopy'] ) ? $instance['showcopy'] : false;
