@@ -4,7 +4,7 @@ Donate link: http://www.lutherkirchgemeinde-radebeul.de/
 Tags: deutsch, german, bible, Bibel, daily, täglich
 Requires at least: 2.8
 Tested up to: 3.4.1
-Stable tag: 1.44
+Stable tag: 1.45
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,9 @@ Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwend
 Immer gerne! Am besten auf Github:
 https://github.com/hesstobi/herrnhuter-losung-widget
 
+Geplante Verbesserungen (irgendwann):
+* Lade die losungen.xml direkt von losungen.de herunter, falls die aktuelle XML-Datei nicht gefunden werden kann. Auf diese Weise müsste ich nicht mehr jährlich ein Update herausbringen.
+
 == Screenshots ==
 
 1. Das Widgets in Aktion
@@ -84,6 +87,8 @@ https://github.com/hesstobi/herrnhuter-losung-widget
 
 == Changelog ==
 
+= 1.45 =
+* Losungen für 2014
 
 = 1.44 =
 * Losungen für 2013
@@ -116,6 +121,9 @@ https://github.com/hesstobi/herrnhuter-losung-widget
 * Losungen für 2010 hinzugefügt
 
 == Upgrade Notice ==
+
+= 1.45 =
+Diese Version ergänzt die Losungen für 2014.
 
 = 1.44 =
 Diese Version ergänzt die Losungen für 2013.
