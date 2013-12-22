@@ -3,7 +3,7 @@ Contributors: hesstobi, benjamin4
 Donate link: http://www.lutherkirchgemeinde-radebeul.de/
 Tags: deutsch, german, bible, Bibel, daily, täglich
 Requires at least: 2.8
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
