@@ -29,6 +29,8 @@ Requirements:
 This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 */
 
+//@include_once(dirname(__FILE__) . '/xml_automatic_updater.php');
+
 class HerrnhuterLosungenPlugin_Xml
 {
 	public function __construct()
@@ -37,6 +39,9 @@ class HerrnhuterLosungenPlugin_Xml
 		{
 			throw new Exception("<p>Die Bibliothek f&uuml;r die Herrnhuter Losungen ben&ouml;tigt PHP 5 (Das Modul simplexml fehlt).</p>");
 		}
+		
+		if (class_exists('HerrnhuterLosungenPlugin_Xml_Automatic_Update'))
+			$automatic_update = new HerrnhuterLosungenPlugin_Xml_Automatic_Update();
 	}
 	
 	protected function loadXmlNode($date)
@@ -50,7 +55,9 @@ class HerrnhuterLosungenPlugin_Xml
 		}
 		
 		$xml = simplexml_load_file($filename);
+
 		$Losung = $xml->Losungen[ $date['yday'] ];
+
 		if (is_null($Losung))
 		{
 			throw new Exception("<p>Komischer Fehler: Konnte keine Losungsverse für diesen Tag finden.</p>");
@@ -98,3 +105,4 @@ class HerrnhuterLosungenPlugin_Xml
 		return $text;
 	}
 }
+
