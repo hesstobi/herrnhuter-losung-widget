@@ -62,7 +62,11 @@ class Losung_Widget extends WP_Widget {
 		if ( $title )
 			echo $args['before_title'] . $title . $args['after_title'];
 		
-		$this->showLosungen($showlink, $showcopy);
+		try {
+			$this->showLosungen($showlink, $showcopy);
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
 
 		echo $args['after_widget'];
 	}
