@@ -9,8 +9,7 @@ Author URI: http://www.tobiashess.de
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
-
-/*
+/**
 License:
 ==============================================================================
 Copyright 2009 Tobias Heß  (email : me@tobiashess.de)
@@ -40,22 +39,18 @@ Requirements:
 This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 */
 
+require_once (dirname(__FILE__) . '/xmlfilereader.php');
+
 class Losung_Widget extends WP_Widget {
 	function __construct() {
-		$widget_ops = array(
+		$widget_default_options = array(
 			'classname' => 'widget_losung',
 			'description' => 'Die heutige Losung der Herrnhuter Brüdergemeine'
 		);
-		parent::__construct('losung', 'Herrnhuter Losung', $widget_ops);
+		parent::__construct('losung', 'Herrnhuter Losung', $widget_default_options);
 	}
 
 	function widget($args, $instance) {
-		if (!function_exists('simplexml_load_file'))
-		{
-			echo "<p>Das Losung-Widget ben&ouml;tigt PHP 5 (simplexml fehlt).</p>";
-			return;
-		}
-	
 		$title = apply_filters('widget_title', $instance['title'] );
 		
 		$showcopy = isset( $instance['showcopy'] ) ? $instance['showcopy'] : false;
@@ -67,37 +62,26 @@ class Losung_Widget extends WP_Widget {
 		if ( $title )
 			echo $args['before_title'] . $title . $args['after_title'];
 		
-		$this->showLosungen(getdate(), $showlink, $showcopy);
+		$this->showLosungen($showlink, $showcopy);
 
 		echo $args['after_widget'];
 	}
 	
-	function showLosungen($datum, $showlink, $showcopy)
+	function showLosungen($showlink, $showcopy)
 	{
 		#Losung einlesen
-		$filename = dirname(__FILE__) ."/losungen" . $datum['year'] . ".xml";
-		if (!file_exists($filename))
-		{
-			echo "<p>Die Losungen von diesem Jahr sind noch nicht da. Ein Update k&ouml;nnte helfen.</p>";
-			return;
-		}
-		
-		$xml = simplexml_load_file($filename);
-		$Losung = $xml->Losungen[ $datum['yday'] ];
-		if (is_null($Losung))
-		{
-			echo "<p>Komischer Fehler: Konnte keine Losungsverse für diesen Tag finden.</p>";
-			return;
-		}
+		$losungen = new HerrnhuterLosungenPlugin_Xml();
+		$verseFuerHeute = $losungen->getVerse();
 
 		#Losung ausgeben:
 		$options = array('showlink' => $showlink);
-		$options['css'] = 'losung-losungstext';
-		$this->showBibleVers($Losung->Losungstext, $Losung->Losungsvers, $options);
-	
-		#Lehrtext ausgeben:
-		$options['css'] = 'losung-lehrtext';
-		$this->showBibleVers($Losung->Lehrtext, $Losung->Lehrtextvers, $options);
+		
+		foreach ($verseFuerHeute as $name => $vers)
+		{
+			$options['css'] = 'losung-' . $name;
+			$text_formatted = $losungen->convertTextToHtml($vers['text']);
+			$this->showBibleVers($text_formatted, $vers['vers'], $options);
+		}
 		
 		#Copyright ausgeben
 		if ($showcopy)
@@ -106,32 +90,11 @@ class Losung_Widget extends WP_Widget {
 	
 	function showBibleVers($text, $vers, $options = array())
 	{
-		$defaults = array(
-			'css' => 'losung',
-			'showlink' => true
-		);
-		$options = $options + $defaults;
-	
-		echo '<p class="losung-text ' . $options['css'] . '">' . $this->applyFormat($text) . "</p>";
-		
-		echo '<p class="losung-versangabe">';
-		
-		if ($options['showlink'])
-			echo '<a href="http://www.bibleserver.com/go.php?lang=de&amp;bible=LUT&amp;ref=' . urlencode($vers) . '" target="_blank" title="Auf bibleserver.com nachschlagen">' . $vers . "</a>";
-		else
-			echo $vers;
-		
-		echo "</p>";
+		include(dirname(__FILE__) . '/views/frontend_verse.php');
 	}
 	
-	function applyFormat($text)
-	{
-		$text = preg_replace('#/(.*?:)/#', '<span class="losung-losungseinleitung">$1</span>', $text, 1);
-		$text = preg_replace('/#(.*?)#/', '<em>$1</em>', $text);
-		
-		return $text;
-	}
- 
+	/* Widget options GUI */	
+	
 	function update($new_instance, $old_instance) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags(stripslashes($new_instance['title']));
@@ -145,27 +108,7 @@ class Losung_Widget extends WP_Widget {
 		$default = array('title' => 'Die Losung von Heute', 'showcopy' => true, 'showlink' => true );
 	    $instance = wp_parse_args( (array) $instance, $default);
 	
-		echo '<p>';
-	    echo  '<label for="' . $this->get_field_id('title') . '">';
-	    echo  'Titel:</label>';
-	    echo  '<input style="width: 100%;" id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . $instance['title'] . '" />';
-	    echo  '</p>';
-		
-		echo '<p>';
-		echo '<input class="checkbox" type="checkbox" ';
-		if ($instance['showlink'])
-			echo 'checked="checked" ';
-		echo 'id="' . $this->get_field_id( 'showlink' ) . '" name="' .  $this->get_field_name( 'showlink' ) . '" />';
-		echo '<label for="' . $this->get_field_id( 'showlink' ) . '"> Zeige Link zu Bibleserver.com</label>';
-		echo '</p>';
-		
-		echo '<p>';
-		echo '<input class="checkbox" type="checkbox" ';
-		if ($instance['showcopy'])
-			echo 'checked="checked" ';
-		echo 'id="' . $this->get_field_id( 'showcopy' ) . '" name="' .  $this->get_field_name( 'showcopy' ) . '" />';
-		echo '<label for="' . $this->get_field_id( 'showcopy' ) . '"> Zeige Copyright</label>';
-		echo '</p>';
+		include(dirname(__FILE__) . '/views/widget_options.php');
 	}
 }
 
