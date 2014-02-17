@@ -1,13 +1,13 @@
 Herrnhuter Losung
 =================
 
-*Contributors*: hesstobi, benjamin4
-*Donate link*: http://www.lutherkirchgemeinde-radebeul.de/
-*Tags*: deutsch, german, bible, Bibel, daily, täglich
-*Requires at least*: 2.8
-*Tested up to*: 3.8
-*License*: GPLv2 or later
-*License URI*: http://www.gnu.org/licenses/gpl-2.0.html
+*Contributors*: hesstobi, benjamin4<br>
+*Donate link*: http://www.lutherkirchgemeinde-radebeul.de/<br>
+*Tags*: deutsch, german, bible, Bibel, daily, täglich<br>
+*Requires at least*: 2.8<br>
+*Tested up to*: 3.8<br>
+*License*: GPLv2 or later<br>
+*License URI*: http://www.gnu.org/licenses/gpl-2.0.html<br>
 
 Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeine in Deutsch als Widget an der Sidebar an.
 
@@ -72,14 +72,13 @@ Damit wird der Losungstext und der Lehrtext fett gedruckt und das Copyright ist 
 Frequently Asked Questions
 --------------------------
 
-= Ich bekomme folgende Fehlermeldung: Fatal error: Call to undefined function: simplexml_load_file() =
+### Ich bekomme folgende Fehlermeldung: Fatal error: Call to undefined function: simplexml_load_file()
 
 Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwendet. Für php4 gibt es leider keinen so einfachen xml-Parser.
 
-= Wo kann ich Verbesserungen am Code einreichen? =
+### Wo kann ich Verbesserungen am Code einreichen?
 
-Immer gerne! Am besten auf Github:
-https://github.com/hesstobi/herrnhuter-losung-widget
+Immer gerne! Am besten hier als Pull Request.
 
 Geplante Verbesserungen (irgendwann):
 * Lade die losungen.xml direkt von losungen.de herunter, falls die aktuelle XML-Datei nicht gefunden werden kann. Auf diese Weise müsste ich nicht mehr jährlich ein Update herausbringen.
@@ -93,36 +92,36 @@ Screenshots
 Changelog
 ---------
 
-= 1.45 =
+### 1.45
 * Losungen für 2014
 
-= 1.44 =
+### 1.44
 * Losungen für 2013
 * Zeige ein Warnung, falls XML-Datei nicht existiert oder nicht den gesuchten Inhalt hat.
 
-= 1.43 =
+### 1.43
 * Update Screenshots
 * Neue CSS-Klasse losung-text für beide Bibelverse
 
-= 1.42 =
+### 1.42
 * XHTML Compability
 * Fix: Hervorhebungen im Losungstext mit # # werden jetzt kursiv angezeigt
 
-= 1.41 =
+### 1.41
 * kleine Verbesserungen am Quellcode, vielen Dank Benjamin!
 * Die Losungen für 2012
 
-= 1.4 =
+### 1.4
 * Problem mit xml-file load auf einigen Servern behoben. Vielen Danke Benjamin für den Hinweis
 * Die Einleitenden Worte der Losung (wie z.B. Jesus spricht:) werden nun ohne die '/' angezeigt und können über die css-Klasse losung-losungseinleitung formatiert werden
 
-= 1.3 =
+### 1.3
 * Anpassung für das Wordpress Plugin Directory
 
-= 1.2 =
+### 1.2
 * Losungen für 2011 hinzugefügt
 * Losungstext, Lehrtext, Versangaben und Copyright sind nun einzeln über CSS ansprechbar
 
-= 1.11 =
+### 1.11
 * Losungen für 2010 hinzugefügt
 
