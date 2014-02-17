@@ -109,7 +109,7 @@ class Losung_Widget extends WP_Widget {
 	}
  
 	function form($instance) {
-		$default = array('title' => 'Die Losung von Heute', 'showcopy' => true, 'showlink' => true );
+		$default = array('title' => 'Die Losung von heute', 'showcopy' => true, 'showlink' => true );
 	    $instance = wp_parse_args( (array) $instance, $default);
 	
 		include(dirname(__FILE__) . '/views/widget_options.php');
