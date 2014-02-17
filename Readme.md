@@ -1,16 +1,18 @@
-=== Herrnhuter Losung ===
-Contributors: hesstobi, benjamin4
-Donate link: http://www.lutherkirchgemeinde-radebeul.de/
-Tags: deutsch, german, bible, Bibel, daily, täglich
-Requires at least: 2.8
-Tested up to: 3.8
-Stable tag: trunk
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Herrnhuter Losung
+=================
+
+*Contributors*: hesstobi, benjamin4
+*Donate link*: http://www.lutherkirchgemeinde-radebeul.de/
+*Tags*: deutsch, german, bible, Bibel, daily, täglich
+*Requires at least*: 2.8
+*Tested up to*: 3.8
+*License*: GPLv2 or later
+*License URI*: http://www.gnu.org/licenses/gpl-2.0.html
 
 Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeine in Deutsch als Widget an der Sidebar an.
 
-== Description ==
+Description
+-----------
 
 Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeine in Deutsch als Widget an der Sidebar an, mit je einen Vers aus dem alten und dem neuen Testament. Aus lizenzrechtlichen Gründen fehlt der Liedvers bzw. das Gebet.
 
@@ -39,7 +41,8 @@ Den Titel des Widgets, die Verlinkung zu [bibleserver.com](http://www.bibleserve
 * Wordpress > 2.8
 * PHP > 5.0
 
-== Installation ==
+Installation
+------------
 
 1. Lade die Zip-Datei in dein Pluginsverzeichnis `/wp-content/plugins/` und entpacke es
 1. Aktiviere das Plugin im 'Plugins' Menü in WordPress
@@ -66,7 +69,8 @@ Als Beispiel könnt ihr folgendes in eurer CSS Stylesheet schreiben:
 Damit wird der Losungstext und der Lehrtext fett gedruckt und das Copyright ist etwas kleiner und steht rechtsbündig.
 
 
-== Frequently Asked Questions ==
+Frequently Asked Questions
+--------------------------
 
 = Ich bekomme folgende Fehlermeldung: Fatal error: Call to undefined function: simplexml_load_file() =
 
@@ -80,12 +84,14 @@ https://github.com/hesstobi/herrnhuter-losung-widget
 Geplante Verbesserungen (irgendwann):
 * Lade die losungen.xml direkt von losungen.de herunter, falls die aktuelle XML-Datei nicht gefunden werden kann. Auf diese Weise müsste ich nicht mehr jährlich ein Update herausbringen.
 
-== Screenshots ==
+Screenshots
+-----------
 
 1. Das Widgets in Aktion
 2. Die Einstellungen des Widgets
 
-== Changelog ==
+Changelog
+---------
 
 = 1.45 =
 * Losungen für 2014
@@ -119,24 +125,4 @@ Geplante Verbesserungen (irgendwann):
 
 = 1.11 =
 * Losungen für 2010 hinzugefügt
-
-== Upgrade Notice ==
-
-= 1.45 =
-Diese Version ergänzt die Losungen für 2014.
-
-= 1.44 =
-Diese Version ergänzt die Losungen für 2013.
-
-= 1.42 =
-Hervorhebungen über # # wird nun auch kursiv dargestellt.
-
-= 1.3 =
-Diese Version ist die erste die durch das Wordpress Plugin Directory gehostet wird
-
-= 1.2 =
-Diese Version ergänzt die Losungen für 2011 und es sind nun erweiterte Anpassungen über CSS möglich.
-
-= 1.11 =
-Diese Version ergänzt die Losungen für 2010.
 
