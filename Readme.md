@@ -87,7 +87,10 @@ Screenshots
 -----------
 
 1. Das Widgets in Aktion
+![Das Widgets in Aktion](screenshot-1.png)
+
 2. Die Einstellungen des Widgets
+![Die Einstellungen des Widgets](screenshot-2.png)
 
 Changelog
 ---------
