@@ -46,9 +46,10 @@ Installation
 
 Leider wurde dieses Plugin aus dem Plugin-Directory genommen, weil die Bibel-Verse nicht GPL-kompatibel sind. Darum muss es manuell installiert werden:
 
-1. Lade die Zip-Datei in dein Pluginsverzeichnis `/wp-content/plugins/` und entpacke es
-1. Aktiviere das Plugin im 'Plugins' Menü in WordPress
-1. Füge das Widget im entsprechenden Menü zu deiner Seitenleiste hinzu
+1. Lade die aktuelle ZIP-Datei rechts herunter.
+2. Unter Plugins > Installieren > Hochladen die Datei hochladen.
+3. Aktiviere das Plugin
+4. Füge das Widget im entsprechenden Menü zu deiner Seitenleiste hinzu
 
 Zur Anpassung des Designs können folgende CSS Klassen verwendet werden:
 
