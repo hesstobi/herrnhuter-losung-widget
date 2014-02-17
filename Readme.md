@@ -44,6 +44,8 @@ Den Titel des Widgets, die Verlinkung zu [bibleserver.com](http://www.bibleserve
 Installation
 ------------
 
+Leider wurde dieses Plugin aus dem Plugin-Directory genommen, weil die Bibel-Verse nicht GPL-kompatibel sind. Darum muss es manuell installiert werden:
+
 1. Lade die Zip-Datei in dein Pluginsverzeichnis `/wp-content/plugins/` und entpacke es
 1. Aktiviere das Plugin im 'Plugins' Menü in WordPress
 1. Füge das Widget im entsprechenden Menü zu deiner Seitenleiste hinzu
@@ -94,6 +96,9 @@ Screenshots
 
 Changelog
 ---------
+
+### 1.5
+* Refactor und nach Github umziehen
 
 ### 1.45
 * Losungen für 2014

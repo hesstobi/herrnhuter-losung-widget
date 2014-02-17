@@ -4,7 +4,7 @@ Plugin Name: Herrnhuter Losung
 Plugin URI: http://www.tobiashess.de/herrnhuter-losungen-widget/
 Description: Dieses Plugin erstellt ein Sidebar-Widget, was die heutige Losung der Herrnhuter Brüdergemeine auf der Sidebar ausgibt.
 Author: Tobias Heß, Benjamin Pick
-Version: 1.45
+Version: 1.5
 Author URI: http://www.tobiashess.de
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
