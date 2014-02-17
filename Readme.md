@@ -86,10 +86,10 @@ Geplante Verbesserungen (irgendwann):
 Screenshots
 -----------
 
-1. Das Widgets in Aktion
+1. Das Widgets in Aktion<br />
 ![Das Widgets in Aktion](screenshot-1.png)
 
-2. Die Einstellungen des Widgets
+2. Die Einstellungen des Widgets<br />
 ![Die Einstellungen des Widgets](screenshot-2.png)
 
 Changelog
