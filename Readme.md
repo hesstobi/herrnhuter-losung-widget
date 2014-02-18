@@ -98,6 +98,10 @@ Screenshots
 Changelog
 ---------
 
+### 1.6
+
+* Automatisches Update ist jetzt auch über Github möglich. Ggf. muss das Plugin anschließend neu aktiviert werden.
+
 ### 1.5
 * Refactor und nach Github umziehen
 
