@@ -4,7 +4,7 @@ Plugin Name: Herrnhuter Losung
 Plugin URI: http://www.tobiashess.de/herrnhuter-losungen-widget/
 Description: Dieses Plugin erstellt ein Sidebar-Widget, was die heutige Losung der Herrnhuter Brüdergemeine auf der Sidebar ausgibt.
 Author: Tobias Heß, Benjamin Pick
-Version: 1.5
+Version: 1.6
 Author URI: http://www.tobiashess.de
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -53,7 +53,6 @@ class Losung_Widget extends WP_Widget {
 	function widget($args, $instance) {
 		$title = apply_filters('widget_title', $instance['title'] );
 		
-		$showcopy = isset( $instance['showcopy'] ) ? $instance['showcopy'] : false;
 		$showlink = isset( $instance['showlink'] ) ? $instance['showlink'] : false;
 		
 		echo $args['before_widget'];
@@ -88,8 +87,7 @@ class Losung_Widget extends WP_Widget {
 		}
 		
 		#Copyright ausgeben
-		if ($showcopy)
-			echo '<p class="losung-copy"><a href="http://www.ebu.de" target="_blank" title="Evangelische Br&uuml;der-Unit&auml;t">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeine</a> <br> <a href="http://www.losungen.de" target="_blank" title="www.losungen.de">Weitere Informationen finden Sie hier</a></p>';
+		echo '<p class="losung-copy"><a href="http://www.ebu.de" target="_blank" title="Evangelische Br&uuml;der-Unit&auml;t">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeine</a> <br> <a href="http://www.losungen.de" target="_blank" title="www.losungen.de">Weitere Informationen finden Sie hier</a></p>';
 	}
 	
 	function showBibleVers($text, $vers, $options = array())
@@ -102,7 +100,6 @@ class Losung_Widget extends WP_Widget {
 	function update($new_instance, $old_instance) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags(stripslashes($new_instance['title']));
-		$instance['showcopy'] = $new_instance['showcopy'];
 		$instance['showlink'] = $new_instance['showlink'];
 		
 		return $instance;

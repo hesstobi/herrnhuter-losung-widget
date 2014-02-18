@@ -12,11 +12,3 @@
 	echo 'id="' . $this->get_field_id( 'showlink' ) . '" name="' .  $this->get_field_name( 'showlink' ) . '" />';
 	echo '<label for="' . $this->get_field_id( 'showlink' ) . '"> Zeige Link zu Bibleserver.com</label>';
 	echo '</p>';
-	
-	echo '<p>';
-	echo '<input class="checkbox" type="checkbox" ';
-	if ($instance['showcopy'])
-		echo 'checked="checked" ';
-	echo 'id="' . $this->get_field_id( 'showcopy' ) . '" name="' .  $this->get_field_name( 'showcopy' ) . '" />';
-	echo '<label for="' . $this->get_field_id( 'showcopy' ) . '"> Zeige Copyright</label>';
-	echo '</p>';
