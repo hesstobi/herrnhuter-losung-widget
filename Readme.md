@@ -98,6 +98,10 @@ Screenshots
 Changelog
 ---------
 
+### 1.6.1
+
+* Fix Fatal Error bei Plugin-Aktivierung.
+
 ### 1.6
 
 * Automatisches Update ist jetzt auch über Github möglich. Ggf. muss das Plugin anschließend neu aktiviert werden.

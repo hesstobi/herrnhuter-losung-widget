@@ -40,6 +40,7 @@ This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 */
 
 require_once (dirname(__FILE__) . '/lib/xmlfilereader.php');
+require_once (dirname(__FILE__) . '/vendor/WordPress-GitHub-Plugin-Updater/updater.php');
 
 class Losung_Widget extends WP_Widget {
 	function __construct() {
