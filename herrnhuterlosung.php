@@ -119,7 +119,7 @@ function LosungInit() {
 }
 add_action('widgets_init', 'LosungInit');
 
-function LosungAdminInit()
+function LosungPluginUpdateAutomatically()
 {
 	// @see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
 	$config = array(
@@ -137,7 +137,6 @@ function LosungAdminInit()
     );
     new WP_GitHub_Updater($config);
 }
-
-
-add_action('admin_init', 'LosungAdminInit');
+//This lib still has some issues, deactivate for now.
+//add_action('admin_init', 'LosungPluginUpdateAutomatically');
 ?>

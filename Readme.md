@@ -98,6 +98,9 @@ Screenshots
 Changelog
 ---------
 
+### 1.6.2
+* Automatisches Update erstmal wieder deaktivert (hat das Backend langsamer gemacht)
+
 ### 1.6.1
 
 * Fix Fatal Error bei Plugin-Aktivierung.
