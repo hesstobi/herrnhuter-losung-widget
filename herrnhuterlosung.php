@@ -121,8 +121,10 @@ add_action('widgets_init', 'LosungInit');
 
 function LosungAdminInit()
 {
+	// @see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
 	$config = array(
         'slug' => plugin_basename(__FILE__), // this is the slug of your plugin
+        'proper_folder_name' => 'herrnhuter-losung-widget',
         'api_url' => 'https://api.github.com/repos/hesstobi/herrnhuter-losung-widget', // the github API url of your github repo
         'raw_url' => 'https://raw.github.com/hesstobi/herrnhuter-losung-widget/master', // the github raw url of your github repo
         'github_url' => 'https://github.com/hesstobi/herrnhuter-losung-widget', // the github url of your github repo
