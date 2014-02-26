@@ -41,7 +41,6 @@ This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 */
 
 require_once (dirname(__FILE__) . '/lib/xmlfilereader.php');
-require_once (dirname(__FILE__) . '/vendor/WordPress-GitHub-Plugin-Updater/updater.php');
 
 class Losung_Widget extends WP_Widget {
 	function __construct() {
@@ -120,24 +119,4 @@ function LosungInit() {
 }
 add_action('widgets_init', 'LosungInit');
 
-function LosungPluginUpdateAutomatically()
-{
-	// @see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
-	$config = array(
-        'slug' => plugin_basename(__FILE__), // this is the slug of your plugin
-        'proper_folder_name' => 'herrnhuter-losung-widget',
-        'api_url' => 'https://api.github.com/repos/hesstobi/herrnhuter-losung-widget', // the github API url of your github repo
-        'raw_url' => 'https://raw.github.com/hesstobi/herrnhuter-losung-widget/master', // the github raw url of your github repo
-        'github_url' => 'https://github.com/hesstobi/herrnhuter-losung-widget', // the github url of your github repo
-        'zip_url' => 'https://github.com/hesstobi/herrnhuter-losung-widget/zipball/master', // the zip url of the github repo
-        'sslverify' => true, // wether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
-        'requires' => '2.8', // which version of WordPress does your plugin require?
-        'tested' => '3.8', // which version of WordPress is your plugin tested up to?
-        'readme' => 'Readme.md', // which file to use as the readme for the version number
-    );
-    new WP_GitHub_Updater($config);
-}
-//This lib still has some issues, deactivate for now.
-// Todo: Try https://github.com/brainstormmedia/git-plugin-updates instead
-//add_action('admin_init', 'LosungPluginUpdateAutomatically');
 ?>
