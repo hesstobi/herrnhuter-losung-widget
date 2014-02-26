@@ -59,10 +59,6 @@ Zur Anpassung des Designs können folgende CSS Klassen verwendet werden:
 * Versangaben: *losung-versangabe*
 * Copyright: *losung-copy*
 
-
-	
-	
-
 Als Beispiel könnt ihr folgendes in eurer CSS Stylesheet schreiben:
 
 	#sidebar .losung-text {margin-bottom:0; font-weight: bold;}
@@ -71,6 +67,21 @@ Als Beispiel könnt ihr folgendes in eurer CSS Stylesheet schreiben:
 	
 Damit wird der Losungstext und der Lehrtext fett gedruckt und das Copyright ist etwas kleiner und steht rechtsbündig.
 
+
+Update
+------
+
+### Manuell
+
+1. Unter Installierte Plugins, deaktivere und lösche das bisher installierte Plugin.
+2. Dann installiere es nach obiger Anleitung
+
+### Über Wordpress-Aktualisierungen
+
+*(Diese Funktion ist derzeit deaktiviert.)*
+
+1. Installiere das Update.
+2. Ggf. musst du das Plugin erneut aktivieren und überprüfen, ob das Widget noch existiert.
 
 Frequently Asked Questions
 --------------------------
