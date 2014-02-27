@@ -76,6 +76,11 @@ Update
 1. Unter Installierte Plugins, deaktivere und lösche das bisher installierte Plugin.
 2. Dann installiere es nach obiger Anleitung
 
+### Über FTP
+
+1. Lade die aktuelle ZIP-Datei rechts herunter.
+2. Ersetze die bestehende Plugin-Dateien auf dem FTP-Server mit dem Inhalt der ZIP-Datei.
+
 ### Über Wordpress-Aktualisierungen
 
 *(Diese Funktion ist derzeit deaktiviert.)*
