@@ -46,11 +46,13 @@ class HerrnhuterLosungenPlugin_Xml
 	
 	protected function loadXmlNode($date)
 	{
-		$filename = dirname(__FILE__) ."/losungen" . $date['year'] . ".xml";
+		$filename = dirname(__FILE__) ."/../losungen" . $date['year'] . ".xml";
 		$filename = apply_filters('herrnuterlosung_filename_xml', $filename, $date);
 		
 		if (!file_exists($filename))
 		{
+			if (WP_DEBUG)
+				echo 'File not found: ' . $filename;
 			throw new Exception("<p>Die Losungen von diesem Jahr sind noch nicht da. Ein Update k&ouml;nnte helfen.</p>");
 		}
 		
