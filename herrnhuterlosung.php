@@ -5,7 +5,7 @@ Plugin URI: https://github.com/hesstobi/herrnhuter-losung-widget
 Git URI: https://github.com/hesstobi/herrnhuter-losung-widget
 Description: Dieses Plugin erstellt ein Sidebar-Widget, was die heutige Losung der Herrnhuter Brüdergemeine auf der Sidebar ausgibt.
 Author: Tobias Heß, Benjamin Pick
-Version: 1.6.2
+Version: 1.6.3
 Author URI: http://www.tobiashess.de
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,7 +63,7 @@ class Losung_Widget extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		
 		try {
-			$this->showLosungen($showlink, $showcopy);
+			$this->showLosungen($showlink);
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
@@ -71,7 +71,7 @@ class Losung_Widget extends WP_Widget {
 		echo $args['after_widget'];
 	}
 	
-	function showLosungen($showlink, $showcopy)
+	function showLosungen($showlink)
 	{
 		#Losung einlesen
 		$losungen = new HerrnhuterLosungenPlugin_Xml();
