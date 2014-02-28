@@ -1,7 +1,6 @@
 Herrnhuter Losung
 =================
 
-*Contributors*: hesstobi, benjamin4<br>
 *Donate link*: http://www.lutherkirchgemeinde-radebeul.de/<br>
 *Tags*: deutsch, german, bible, Bibel, daily, täglich<br>
 *Requires at least*: 2.8<br>
@@ -113,6 +112,9 @@ Screenshots
 
 Changelog
 ---------
+
+### 1.6.3
+* FIX: Die Losungen von 2014 werden jetzt wieder gefunden.
 
 ### 1.6.2
 * Automatisches Update erstmal wieder deaktivert (hat das Backend langsamer gemacht)
