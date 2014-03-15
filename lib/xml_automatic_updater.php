@@ -39,13 +39,13 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 			return $oldFilename;
 
         $newFilename = $this->alternate_dir . "/losungen" . $date['year'] . ".xml";
-        
-        /* Zu früh im Wordpress-Lifecycle -- naja, sollte sowieso Cron übernehmen 
-        if (!file_exists($newFilename))
-        	$this->doUpdate($date['year']);
-        */
-        
+      
         return $newFilename;
+	}
+	
+	private function _getDownloadUrl($year)
+	{
+		return sprintf(self::DOWNLOAD_URL, (int) $year);	
 	}
 	
 	/**
@@ -58,7 +58,7 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 	 */
 	public function doUpdate($year)
 	{
-		$download_url = sprintf(self::DOWNLOAD_URL, (int) $year);
+		$download_url = $this->_getDownloadUrl($year);
 		
         $tmpFile = download_url($download_url);
         if (is_wp_error($tmpFile))
@@ -72,6 +72,15 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
         // DAS xml-File, egal wie es heißt, soll losungen$year.xml werden
         
         @unlink($tmpFile);
+	}
+	
+	public function checkIfUpdateAvailable($year)
+	{
+		$ret = wp_remote_head($this->_getDowloadUrl($year));
+		if (is_wp_error($ret))
+			throw $ret;
+			
+		return ($ret['response']['code'] == 200);
 	}
 
 }
