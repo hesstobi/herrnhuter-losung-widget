@@ -41,14 +41,21 @@ This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 */
 
 require_once (dirname(__FILE__) . '/lib/xmlfilereader.php');
+require_once (dirname(__FILE__) . '/lib/xml_automatic_updater.php');
+
 
 class Losung_Widget extends WP_Widget {
+	
+	protected $updater;
+	
 	function __construct() {
 		$widget_default_options = array(
 			'classname' => 'widget_losung',
 			'description' => 'Die heutige Losung der Herrnhuter Brüdergemeine'
 		);
 		parent::__construct('losung', 'Herrnhuter Losung', $widget_default_options);
+		
+		$this->updater = new HerrnhuterLosungenPlugin_Xml_Automatic_Update();
 	}
 
 	function widget($args, $instance) {
@@ -112,8 +119,48 @@ class Losung_Widget extends WP_Widget {
 			'showlink' => true
 		);
 	    $instance = wp_parse_args( (array) $instance, $default);
-	
+		$message = '';
+
+		if (@$_POST['action'] == 'updatelosungen')
+		{
+			$year = (int) $_POST['year'];
+			try
+			{
+				if ($this->updater->do_update(array('year' => $year)))
+					$message = 'Die Losungen für ' . $year . ' wurden erfolgreich installiert';
+			} catch (Exception $e) {
+				$message = 'Fehler: ' . $e->getMessage();
+			}
+		}
+		
+	    $updateAvailable = $this->checkIfUpdatesAreAvailable();
+		
+	    
 		include(dirname(__FILE__) . '/views/widget_options.php');
+	}
+	
+	function checkIfUpdatesAreAvailable() {
+	    $now = getdate();
+	    $nextYear = getdate(strtotime('next year'));
+
+	    $updateAvailable = array();
+	    foreach (array($now, $nextYear) as $date)
+	    {
+	    	if ($this->checkIfUpdateIsAvailable($date))
+	    		$updateAvailable[] = $date;
+	    }
+	    
+	    return $updateAvailable;
+	}
+	
+	private function checkIfUpdateIsAvailable($date)
+	{
+	    $losungen = new HerrnhuterLosungenPlugin_Xml();
+	    if (!$losungen->checkIfLosungenAvailable($date))
+	    {
+			if ($this->updater->checkIfUpdateAvailable($date))
+				return true;
+	    }
 	}
 }
 

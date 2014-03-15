@@ -44,11 +44,22 @@ class HerrnhuterLosungenPlugin_Xml
 			$automatic_update = new HerrnhuterLosungenPlugin_Xml_Automatic_Update();
 	}
 	
-	protected function loadXmlNode($date)
+	protected function _getLosungenFilename($date)
 	{
 		$filename = dirname(__FILE__) ."/../losungen" . $date['year'] . ".xml";
-		$filename = apply_filters('herrnuterlosung_filename_xml', $filename, $date);
+		$filename = apply_filters('herrnhuterlosung_filename_xml', $filename, $date);
 		
+		return $filename;
+	}
+	
+	public function checkIfLosungenAvailable($date)
+	{
+		return file_exists($this->_getLosungenFilename($date));
+	}
+	
+	protected function loadXmlNode($date)
+	{
+		$filename = $this->_getLosungenFilename($date);
 		if (!file_exists($filename))
 		{
 			if (WP_DEBUG)

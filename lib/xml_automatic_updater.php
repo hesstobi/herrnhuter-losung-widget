@@ -22,12 +22,12 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 {
 	const DOWNLOAD_URL = 'http://www.brueder-unitaet.de/download/Losung_%s_XML.zip';
 	
-	private $alternate_dir;
+	protected $alternate_dir;
 	
 	public function __construct()
 	{
 		// Look for the Losungen xml in the /uploads-Folder as well
-		add_filter('herrnuterlosung_filename_xml', array($this, 'xmlFileName'), 10, 2);
+		add_filter('herrnhuterlosung_filename_xml', array($this, 'xmlFileName'), 10, 2);
 
         $upload_dir = wp_upload_dir();
         $this->alternate_dir = $upload_dir['basedir'];
@@ -38,14 +38,15 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 		if (file_exists($oldFilename))
 			return $oldFilename;
 
-        $newFilename = $this->alternate_dir . "/losungen" . $date['year'] . ".xml";
+        $newFilename = $this->alternate_dir . "/Losungen Free " . (int) $date['year'] . ".xml";
       
         return $newFilename;
 	}
 	
-	private function _getDownloadUrl($year)
+	protected function _getDownloadUrl($date)
 	{
-		return sprintf(self::DOWNLOAD_URL, (int) $year);	
+		$url = apply_filters('herrnhuterlosung_download_url', self::DOWNLOAD_URL);
+		return sprintf($url, (int) $date['year']);	
 	}
 	
 	/**
@@ -56,9 +57,9 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 	 * 
 	 * @param int $year
 	 */
-	public function doUpdate($year)
+	public function doUpdate($date)
 	{
-		$download_url = $this->_getDownloadUrl($year);
+		$download_url = $this->_getDownloadUrl($date);
 		
         $tmpFile = download_url($download_url);
         if (is_wp_error($tmpFile))
@@ -72,11 +73,14 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
         // DAS xml-File, egal wie es heißt, soll losungen$year.xml werden
         
         @unlink($tmpFile);
+        
+        return true;
 	}
 	
-	public function checkIfUpdateAvailable($year)
+	public function checkIfUpdateAvailable($date)
 	{
-		$ret = wp_remote_head($this->_getDowloadUrl($year));
+		$url = $this->_getDownloadUrl($date);
+		$ret = wp_remote_head($url);
 		if (is_wp_error($ret))
 			throw $ret;
 			
