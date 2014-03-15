@@ -63,11 +63,11 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 		
         $tmpFile = download_url($download_url);
         if (is_wp_error($tmpFile))
-         	throw $tmpFile;
-                
+         	return $tmpFile;
+        
         $ret = unzip_file($tmpFile, $this->alternate_dir);
         if (is_wp_error($ret))
-        	throw $ret;
+        	return $ret;
         	
         // TODO rename file from temporary directory 
         // DAS xml-File, egal wie es heißt, soll losungen$year.xml werden

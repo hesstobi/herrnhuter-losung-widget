@@ -124,12 +124,12 @@ class Losung_Widget extends WP_Widget {
 		if (@$_POST['action'] == 'updatelosungen')
 		{
 			$year = (int) $_POST['year'];
-			try
-			{
-				if ($this->updater->do_update(array('year' => $year)))
-					$message = 'Die Losungen für ' . $year . ' wurden erfolgreich installiert';
-			} catch (Exception $e) {
-				$message = 'Fehler: ' . $e->getMessage();
+			
+			$ret = $this->updater->doUpdate(array('year' => $year));
+			if ($ret === true) {
+				$message = 'Die Losungen für ' . $year . ' wurden erfolgreich installiert';
+			} elseif (is_wp_error($ret)) {
+				$message = '<b>Fehler:</b> ' . $ret->get_error_message();
 			}
 		}
 		
