@@ -16,7 +16,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  * @author Benjamin Pick
  *
  */
-
+require_once(ABSPATH . '/wp-admin/includes/file.php');
 
 class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 {
@@ -38,14 +38,17 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 		if (file_exists($oldFilename))
 			return $oldFilename;
 
-        $newFilename = $this->alternate_dir . "/Losungen Free " . (int) $date['year'] . ".xml";
+        $newFilename = $this->alternate_dir . "/losungen" . (int) $date['year'] . ".xml";
       
         return $newFilename;
 	}
 	
 	protected function _getDownloadUrl($date)
 	{
-		$url = apply_filters('herrnhuterlosung_download_url', self::DOWNLOAD_URL);
+		if (WP_DEBUG)
+			$url = 'http://localhost/local/Losung_%s_XML.zip';
+		else
+			$url = apply_filters('herrnhuterlosung_download_url', self::DOWNLOAD_URL);
 		return sprintf($url, (int) $date['year']);	
 	}
 	
@@ -65,24 +68,42 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
         if (is_wp_error($tmpFile))
          	return $tmpFile;
         
-        $ret = unzip_file($tmpFile, $this->alternate_dir);
+        $tempDir = $this->alternate_dir . '/update-losungen-' . time() . '/';
+        mkdir($tempDir, 0755, true);
+
+        $ret = unzip_file($tmpFile, $tempDir);
         if (is_wp_error($ret))
         	return $ret;
         	
-        // TODO rename file from temporary directory 
-        // DAS xml-File, egal wie es heißt, soll losungen$year.xml werden
+        $losungenFile = '';
+        foreach (list_files($tempDir) as $file)
+        {
+        	if (substr($file, -4) == '.xml') {
+        		$losungenFile = $tempDir . $file;
+        		break;
+        	}
+        }
         
-        @unlink($tmpFile);
+        if (!$losungenFile)
+        	return new WP_Error(17000, 'No XML-File in Zip found! (' . $download_url . ')');
         
-        return true;
+        rename($losungenFile, $this->xmlFileName('', $date));
+        
+        unlink($tmpFile);
+        unlink($tempDir); // Recursive Delete!
+        
+        return file_exists($this->xmlFileName('', $date));
 	}
 	
 	public function checkIfUpdateAvailable($date)
 	{
 		$url = $this->_getDownloadUrl($date);
 		$ret = wp_remote_head($url);
-		if (is_wp_error($ret))
-			throw $ret;
+		if (is_wp_error($ret)) {
+			if (WP_DEBUG)
+				echo "<div class='error'>Fehler: $url: " . $ret->get_error_message() . '<br /></div>';
+			return false;
+		}
 			
 		return ($ret['response']['code'] == 200);
 	}
