@@ -62,24 +62,31 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 	 */
 	public function doUpdate($date)
 	{
-		$download_url = $this->_getDownloadUrl($date);
+		global $wp_filesystem;
+
+		$download_url = $this->_getDownloadUrl($date);    
+		$this->_setup_WP_Filesystem($download_url);
 		
+		// 1) Downlaod File
         $tmpFile = download_url($download_url);
         if (is_wp_error($tmpFile))
-         	return $tmpFile;
+         	return $tmpFile;       
         
+        // 2) Unzip to tempDir
         $tempDir = $this->alternate_dir . '/update-losungen-' . time() . '/';
-        mkdir($tempDir, 0755, true);
-
+        if (!is_dir($tempDir))
+        	$wp_filesystem->mkdir($tempDir);
+        
         $ret = unzip_file($tmpFile, $tempDir);
         if (is_wp_error($ret))
         	return $ret;
         	
+        // Search any XML File!
         $losungenFile = '';
         foreach (list_files($tempDir) as $file)
         {
         	if (substr($file, -4) == '.xml') {
-        		$losungenFile = $tempDir . $file;
+        		$losungenFile = $file;
         		break;
         	}
         }
@@ -87,10 +94,11 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
         if (!$losungenFile)
         	return new WP_Error(17000, 'No XML-File in Zip found! (' . $download_url . ')');
         
-        rename($losungenFile, $this->xmlFileName('', $date));
+        $wp_filesystem->move($losungenFile, $this->xmlFileName('', $date), true);
         
-        unlink($tmpFile);
-        unlink($tempDir); // Recursive Delete!
+        // Clean up
+        $wp_filesystem->delete($tmpFile);
+        $wp_filesystem->delete($tempDir, true); // TODO Recursive Delete!
         
         return file_exists($this->xmlFileName('', $date));
 	}
@@ -108,4 +116,24 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 		return ($ret['response']['code'] == 200);
 	}
 
+	protected function _setup_WP_Filesystem($download_url) {
+		global $wp_filesystem;
+		
+		if ( false === ( $credentials = request_filesystem_credentials( $download_url, '', false, $this->alternate_dir ) ) ) {
+			return;
+		}
+	
+		if ( ! WP_Filesystem( $credentials, $this->alternate_dir ) ) {
+			// Failed to connect, Error and request again
+			request_filesystem_credentials( $download_url, '', true, $this->alternate_dir );
+			return;
+		}
+	
+		if ( $wp_filesystem->errors->get_error_code() ) {
+			foreach ( $wp_filesystem->errors->get_error_messages() as $message )
+				show_message($message);
+			return;
+		}
+	}	
+	
 }

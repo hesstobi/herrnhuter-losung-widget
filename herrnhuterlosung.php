@@ -127,7 +127,7 @@ class Losung_Widget extends WP_Widget {
 			
 			$ret = $this->updater->doUpdate(array('year' => $year));
 			if ($ret === true) {
-				$message = 'Die Losungen für ' . $year . ' wurden erfolgreich installiert';
+				$message = 'Die Losungen für ' . $year . ' wurden erfolgreich installiert.';
 			} elseif (is_wp_error($ret)) {
 				$message = '<div class="error"><b>Fehler:</b> ' . $ret->get_error_message() . '</div>';
 			}
