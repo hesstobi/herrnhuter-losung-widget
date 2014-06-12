@@ -29,20 +29,20 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 		// Look for the Losungen xml in the /uploads-Folder as well
 		add_filter('herrnhuterlosung_filename_xml', array($this, 'xmlFileName'), 10, 2);
 
-        $upload_dir = wp_upload_dir();
-        $this->alternate_dir = $upload_dir['basedir'];
+		$upload_dir = wp_upload_dir();
+		$this->alternate_dir = $upload_dir['basedir'];
 	}
-	
+
 	public function xmlFileName($oldFilename, $date)
 	{
 		if (file_exists($oldFilename))
-			return $oldFilename;
+		return $oldFilename;
 
-        $newFilename = $this->alternate_dir . "/losungen" . (int) $date['year'] . ".xml";
-      
-        return $newFilename;
+		$newFilename = $this->alternate_dir . "/losungen" . (int) $date['year'] . ".xml";
+
+		return $newFilename;
 	}
-	
+
 	protected function _getDownloadUrl($date)
 	{
 		if (WP_DEBUG)
@@ -50,6 +50,25 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 		else
 			$url = apply_filters('herrnhuterlosung_download_url', self::DOWNLOAD_URL);
 		return sprintf($url, (int) $date['year']);	
+	}
+	
+	public function updater_gui()
+	{
+		if (@$_POST['action'] == 'updatelosungen')
+		{
+			$year = (int) $_POST['year'];
+		
+			$ret = $this->doUpdate(array('year' => $year));
+			if ($ret === true) {
+				$message = 'Die Losungen für ' . $year . ' wurden erfolgreich installiert.';
+			} elseif (is_wp_error($ret)) {
+				$error = '<b>Fehler:</b> ' . $ret->get_error_message();
+			}
+		} 
+		
+		$updateAvailable = $this->checkIfUpdatesAreAvailable();
+		
+		include(dirname(__FILE__) . '/../views/updater.php');
 	}
 	
 	/**
@@ -134,6 +153,37 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 				show_message($message);
 			return;
 		}
-	}	
+	}
+	
+	/**
+	 * Überprüfe, ob aktuelle und nächstjährige Losungen vorhanden sind.
+	 * Falls nicht, überprüfe ob sie heruntergeladen werden können.
+	 */
+	function checkIfUpdatesAreAvailable() {
+	    $now = getdate();
+	    $nextYear = getdate(strtotime('next year'));
+
+	    $updateAvailable = array();
+	    foreach (array($now, $nextYear) as $date)
+	    {
+	    	if ($this->checkIfUpdateIsAvailable($date))
+	    		$updateAvailable[] = $date;
+	    }
+	    
+	    return $updateAvailable;
+	}
+	
+	private function checkIfUpdateIsAvailable($date)
+	{
+	    $losungen = new HerrnhuterLosungenPlugin_Xml();
+	    if (!$losungen->checkIfLosungenAvailable($date))
+	    {
+			if ($this->checkIfUpdateAvailable($date))
+				return true;
+	    }
+	    return false;
+	}
+	
+	
 	
 }

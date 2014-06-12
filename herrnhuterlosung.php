@@ -46,16 +46,12 @@ require_once (dirname(__FILE__) . '/lib/xml_automatic_updater.php');
 
 class Losung_Widget extends WP_Widget {
 	
-	protected $updater;
-	
 	function __construct() {
 		$widget_default_options = array(
 			'classname' => 'widget_losung',
 			'description' => 'Die heutige Losung der Herrnhuter Brüdergemeine'
 		);
 		parent::__construct('losung', 'Herrnhuter Losung', $widget_default_options);
-		
-		$this->updater = new HerrnhuterLosungenPlugin_Xml_Automatic_Update();
 	}
 
 	function widget($args, $instance) {
@@ -112,6 +108,19 @@ class Losung_Widget extends WP_Widget {
 		
 		return $instance;
 	}
+	
+	function checkIfInstalled($dates) {
+		$losungReader = new HerrnhuterLosungenPlugin_Xml();
+	    $ret = array();
+	    
+	    foreach ($dates as $date)
+	    {
+	    	$installed = $losungReader->checkIfLosungenAvailable($date);
+    		$ret[] = array('date' => $date, 'installed' => $installed);
+	    }
+	    
+	    return $ret;
+	}
  
 	function form($instance) {
 		$default = array(
@@ -119,48 +128,13 @@ class Losung_Widget extends WP_Widget {
 			'showlink' => true
 		);
 	    $instance = wp_parse_args( (array) $instance, $default);
-		$message = '';
-
-		if (@$_POST['action'] == 'updatelosungen')
-		{
-			$year = (int) $_POST['year'];
-			
-			$ret = $this->updater->doUpdate(array('year' => $year));
-			if ($ret === true) {
-				$message = 'Die Losungen für ' . $year . ' wurden erfolgreich installiert.';
-			} elseif (is_wp_error($ret)) {
-				$message = '<div class="error"><b>Fehler:</b> ' . $ret->get_error_message() . '</div>';
-			}
-		}
-		
-	    $updateAvailable = $this->checkIfUpdatesAreAvailable();
-		
 	    
-		include(dirname(__FILE__) . '/views/widget_options.php');
-	}
-	
-	function checkIfUpdatesAreAvailable() {
-	    $now = getdate();
-	    $nextYear = getdate(strtotime('next year'));
-
-	    $updateAvailable = array();
-	    foreach (array($now, $nextYear) as $date)
-	    {
-	    	if ($this->checkIfUpdateIsAvailable($date))
-	    		$updateAvailable[] = $date;
-	    }
+	    $_now = getdate();
+	    $_nextYear = getdate(strtotime('next year'));
+	    $installed = $this->checkIfInstalled(array($_now, $_nextYear));
 	    
-	    return $updateAvailable;
-	}
-	
-	private function checkIfUpdateIsAvailable($date)
-	{
-	    $losungen = new HerrnhuterLosungenPlugin_Xml();
-	    if (!$losungen->checkIfLosungenAvailable($date))
-	    {
-			if ($this->updater->checkIfUpdateAvailable($date))
-				return true;
-	    }
+	    
+	    include(dirname(__FILE__) . '/views/widget_options.php');
 	}
 }
 
@@ -169,4 +143,9 @@ function LosungInit() {
 }
 add_action('widgets_init', 'LosungInit');
 
+function LosungUpdate() {
+	$updater = new HerrnhuterLosungenPlugin_Xml_Automatic_Update();
+	$updater->updater_gui();
+}
+add_action('widgets_admin_page', 'LosungUpdate')
 ?>

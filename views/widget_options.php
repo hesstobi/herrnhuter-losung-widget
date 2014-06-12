@@ -1,16 +1,9 @@
-<?php if ($message) : ?>
-<p class="notice">
-	<?php echo $message; ?>
-</p>
-<?php endif; ?>
-<?php if ($updateAvailable) :?>
-<p class="notice">
-	<?php foreach ($updateAvailable as $date) : ?>
-	Die Losungen für <?php echo $date['year']; ?> können jetzt installiert werden:
-	<input type="hidden" name="action" value="updatelosungen" /><input type="hidden" name="year" value="<?php echo $date['year']; ?>" /><input type="submit" class="button button-secondary right" value="Installieren" />
-	<?php endforeach; ?>
-</p>
-<?php endif; ?>
+<div class="updated inline">
+<?php foreach ($installed as $data) : ?>
+Losungen für <?php echo $data['date']['year'] ?>: <?php echo $data['installed'] ? 'Installiert' : 'Nicht installiert'; ?>
+<br />
+<?php endforeach; ?>
+</div>
 <p>
 	<label for="<?php echo $this->get_field_id('title') ?>">Titel:</label>
    	<input style="width: 100%;" id="<?php echo $this->get_field_id('title') ?>" name="<?php echo $this->get_field_name('title') ?>" type="text" value="<?php echo esc_attr($instance['title']); ?>" />
