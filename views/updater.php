@@ -1,18 +1,27 @@
 <?php if (!empty($error)) : ?>
-<p class="error">
+<div class="error">
+	<b>Herrnhuter Losung:</b><br />
 	<?php echo $error; ?>
-</p>
+</div>
 <?php endif; ?>
 <?php if (!empty($message)) : ?>
-<p class="updated">
+<div class="updated">
+	<b>Herrnhuter Losung:</b><br />
 	<?php echo $message; ?>
-</p>
+</div>
 <?php endif; ?>
-<?php if ($updateAvailable) :?>
-<p class="notice">
+<?php if ($updateAvailable) : ?>
+<div class="updated">
+	<b>Herrnhuter Losung:</b>	<br />
 	<?php foreach ($updateAvailable as $date) : ?>
 	Die Losungen für <?php echo $date['year']; ?> können jetzt installiert werden:
-	<input type="hidden" name="action" value="updatelosungen" /><input type="hidden" name="year" value="<?php echo $date['year']; ?>" /><input type="submit" class="button button-secondary right" value="Installieren" />
+	<br /> <br />
+	<form action="" method="post">
+	<input type="hidden" name="action" value="updatelosungen" />
+	<input type="hidden" name="year" value="<?php echo $date['year']; ?>" />
+	<input type="submit" class="button button-primary" value="Installieren" />
+	</form>
+	<br /> <br />
 	<?php endforeach; ?>
-</p>
+</div>
 <?php endif; ?>

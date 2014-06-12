@@ -39,9 +39,6 @@ class HerrnhuterLosungenPlugin_Xml
 		{
 			throw new Exception("<p>Die Bibliothek f&uuml;r die Herrnhuter Losungen ben&ouml;tigt PHP 5 (Das Modul simplexml fehlt).</p>");
 		}
-		
-		if (class_exists('HerrnhuterLosungenPlugin_Xml_Automatic_Update'))
-			$automatic_update = new HerrnhuterLosungenPlugin_Xml_Automatic_Update();
 	}
 	
 	protected function _getLosungenFilename($date)
@@ -64,7 +61,7 @@ class HerrnhuterLosungenPlugin_Xml
 		{
 			if (WP_DEBUG)
 				echo 'File not found: ' . $filename;
-			throw new Exception("<p>Die Losungen von diesem Jahr sind noch nicht da. Ein Update k&ouml;nnte helfen.</p>");
+			throw new Exception("<p>Die Losungen von diesem Jahr sind noch nicht da. Schau unter Widgets nach ob du sie installieren kannst.</p>");
 		}
 		
 		$xml = simplexml_load_file($filename);

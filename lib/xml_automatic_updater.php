@@ -100,7 +100,7 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
         if (is_wp_error($ret))
         	return $ret;
         	
-        // Search any XML File!
+        // 3) Search any XML File!
         $losungenFile = '';
         foreach (list_files($tempDir) as $file)
         {
@@ -110,14 +110,18 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
         	}
         }
         
+        // TODO Syntax Validation of XML file
+        
         if (!$losungenFile)
-        	return new WP_Error(17000, 'No XML-File in Zip found! (' . $download_url . ')');
+        	return new WP_Error(17000, 'In der Zip-Datei war keine Losungs-XML! (' . $download_url . ')');
         
-        $wp_filesystem->move($losungenFile, $this->xmlFileName('', $date), true);
+        // 4) Put in the right place
+        if (!$wp_filesystem->move($losungenFile, $this->xmlFileName('', $date), true))
+        	return new WP_Error(17000, 'Die XML-Datei konnte nicht geschrieben werden! (' . $this->xmlFileName('', $date) . ')');
         
-        // Clean up
+        // 5) Finally, clean up
         $wp_filesystem->delete($tmpFile);
-        $wp_filesystem->delete($tempDir, true); // TODO Recursive Delete!
+        $wp_filesystem->delete($tempDir, true);
         
         return file_exists($this->xmlFileName('', $date));
 	}
