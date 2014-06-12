@@ -110,17 +110,20 @@ Screenshots
 2. Die Einstellungen des Widgets<br />
 ![Die Einstellungen des Widgets](screenshot-2.png)
 
+3. Update der Losungs-Datei zum Jahres-Ende<br />
+![Update der Losungs-Datei zum Jahres-Ende](screenshot-3.png)
+
 Changelog
 ---------
 
-### 1.6.4
-
+### 1.7
+* Die Losungs-Dateien können nun manuell im Backend unter Widgets aktualisiert werden.
 
 ### 1.6.3
 * FIX: Die Losungen von 2014 werden jetzt wieder gefunden.
 
 ### 1.6.2
-* Automatisches Update erstmal wieder deaktivert (hat das Backend langsamer gemacht)
+* Automatisches Update erstmal wieder deaktiviert (hat das Backend langsamer gemacht)
 
 ### 1.6.1
 
