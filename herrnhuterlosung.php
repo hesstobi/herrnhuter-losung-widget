@@ -52,6 +52,8 @@ class Losung_Widget extends WP_Widget {
 			'description' => 'Die heutige Losung der Herrnhuter Brüdergemeine'
 		);
 		parent::__construct('losung', 'Herrnhuter Losung', $widget_default_options);
+		
+		new HerrnhuterLosungenPlugin_Xml_Automatic_Update();
 	}
 
 	function widget($args, $instance) {

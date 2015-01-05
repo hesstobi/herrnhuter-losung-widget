@@ -36,7 +36,7 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 	public function xmlFileName($oldFilename, $date)
 	{
 		if (file_exists($oldFilename))
-		return $oldFilename;
+			return $oldFilename;
 
 		$newFilename = $this->alternate_dir . "/losungen" . (int) $date['year'] . ".xml";
 
