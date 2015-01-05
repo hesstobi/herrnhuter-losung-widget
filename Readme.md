@@ -120,6 +120,7 @@ Changelog
 
 ### 1.7.1
 * Die manuell heruntergeladene Datei funktioniert jetzt auch.
+* Losungen für 2015
 
 ### 1.7
 * Die Losungs-Dateien können nun manuell im Backend unter Widgets aktualisiert werden.
