@@ -154,7 +154,7 @@ Changelog
 * Neue CSS-Klasse losung-text für beide Bibelverse
 
 ### 1.42
-* XHTML Compability
+* XHTML Compatibility
 * Fix: Hervorhebungen im Losungstext mit # # werden jetzt kursiv angezeigt
 
 ### 1.41
