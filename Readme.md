@@ -1,12 +1,12 @@
 Herrnhuter Losung
 =================
 
-Aktuelle Version: 1.7.1 (vom 05.01.2015)
+Aktuelle Version: 1.7.2 (vom 17.02.2016)
 
 *Donate link*: http://www.lutherkirchgemeinde-radebeul.de/<br>
 *Tags*: deutsch, german, bible, Bibel, daily, täglich<br>
 *Requires at least*: 2.8<br>
-*Tested up to*: 3.8<br>
+*Tested up to*: 4.4.1<br>
 *License*: GPLv2 or later<br>
 *License URI*: http://www.gnu.org/licenses/gpl-2.0.html<br>
 
