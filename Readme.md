@@ -69,7 +69,7 @@ Als Beispiel könnt ihr folgendes in eurer CSS Stylesheet schreiben:
 Damit wird der Losungstext und der Lehrtext fett gedruckt und das Copyright ist etwas kleiner und steht rechtsbündig.
 
 
-Update
+Update des Plugins
 ------
 
 ### Manuell
@@ -88,6 +88,14 @@ Update
 
 1. Installiere das Update.
 2. Ggf. musst du das Plugin erneut aktivieren und überprüfen, ob das Widget noch existiert.
+
+Update der Losungen
+------
+Das Plugin an sich stellt nur die technische Hülle für die Einbindung der Losungen in eine Webseite bereit. Die Losungen selber werden dabei aus einer XML-Datei gelesen. Diese enthält immer die Losungen für ein komplettes Jahr. Herunterladen kann man diese immer hier: http://www.losungen.de/download/ (als Format "XML" auswählen).
+
+Die XML-Datei muss folgendem Namensschema genügen: "losungen" + [jahr] + ".xml" (Bsp.: "losungen2016.xml").
+
+Diese Datei einfach in den Hauptordner des Plugins legen.
 
 Frequently Asked Questions
 --------------------------
