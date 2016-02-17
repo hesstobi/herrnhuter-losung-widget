@@ -61,7 +61,7 @@ class HerrnhuterLosungenPlugin_Xml
 		{
 			if (WP_DEBUG)
 				echo 'File not found: ' . $filename;
-			throw new Exception("<p>Die Losungen von diesem Jahr sind noch nicht da. Schau unter Widgets nach ob du sie installieren kannst.</p>");
+			throw new Exception("<p>Die Losungensdatei von diesem Jahr konnte nicht gefunden werden. Weitere Infos in der ReadMe.md des Plugins.</p>");
 		}
 		
 		$xml = simplexml_load_file($filename);
