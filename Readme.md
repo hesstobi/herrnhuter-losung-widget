@@ -1,7 +1,7 @@
 Herrnhuter Losung
 =================
 
-Aktuelle Version: 1.7.2 (vom 17.02.2016)
+Aktuelle Version: 1.7.3 (vom 01.01.2017)
 
 *Donate link*: http://www.lutherkirchgemeinde-radebeul.de/<br>
 *Tags*: deutsch, german, bible, Bibel, daily, täglich<br>
