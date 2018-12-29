@@ -1,3 +1,5 @@
+<?php defined( 'ABSPATH' ) or die( 'No script kiddies please!' ); ?>
+
 <div class="updated inline">
     <?php
 

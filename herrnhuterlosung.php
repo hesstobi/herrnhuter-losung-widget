@@ -41,6 +41,10 @@ Requirements:
 This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 */
 
+// Security check: Exit if script is called directly
+
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
 require_once (dirname(__FILE__) . '/lib/xmlfilereader.php');
 require_once (dirname(__FILE__) . '/lib/xml_automatic_updater.php');
 

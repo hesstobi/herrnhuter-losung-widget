@@ -29,6 +29,8 @@ Requirements:
 This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 */
 
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
 class HerrnhuterLosungenPlugin_Xml
 {
 	public function __construct()

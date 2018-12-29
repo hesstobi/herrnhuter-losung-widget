@@ -1,3 +1,4 @@
+<?php defined( 'ABSPATH' ) or die( 'No script kiddies please!' ); ?>
 <?php if (!empty($error)) : ?>
 <div class="error">
 	<b>Herrnhuter Losungen:</b><br />

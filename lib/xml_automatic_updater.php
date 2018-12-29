@@ -23,6 +23,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   *
   */
  
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
  
 require_once(ABSPATH . '/wp-admin/includes/file.php');
 
