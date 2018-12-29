@@ -1,9 +1,15 @@
 <div class="updated inline">
-<?php foreach ($installed as $data) : ?>
-Losungen für <?php echo $data['date']['year'] ?>: <?php echo $data['installed'] ? 'Installiert' : 'Nicht installiert'; ?>
-<br />
-<?php endforeach; ?>
+    <?php
+
+    foreach ($installed as $data) {
+        echo "Losungen " ;
+        echo $data['date']['year'] . ": " ;
+        echo $data['installed'] ? 'Installiert' : 'Nicht installiert';
+        echo '<br />' ;
+    }
+    ?>
 </div>
+
 <p>
 	<label for="<?php echo $this->get_field_id('title') ?>">Titel:</label>
    	<input style="width: 100%;" id="<?php echo $this->get_field_id('title') ?>" name="<?php echo $this->get_field_name('title') ?>" type="text" value="<?php echo esc_attr($instance['title']); ?>" />
