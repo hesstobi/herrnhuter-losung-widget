@@ -16,11 +16,19 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  * @author Benjamin Pick
  *
  */
+ 
+ /** Updated by
+  * Thomas Arend
+  * New DOWNLOAD_URL
+  *
+  */
+ 
+ 
 require_once(ABSPATH . '/wp-admin/includes/file.php');
 
 class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 {
-	const DOWNLOAD_URL = 'http://www.brueder-unitaet.de/download/Losung_%s_XML.zip';
+	const DOWNLOAD_URL = 'https://www.losungen.de/download/Losung_%s_XML.zip';
 	
 	protected $alternate_dir;
 	
