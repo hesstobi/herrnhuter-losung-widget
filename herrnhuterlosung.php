@@ -79,8 +79,11 @@ class Losung_Widget extends WP_Widget {
 	
 	function showLosungen($showlink)
 	{
+		echo "<!-- Losung Widget Version 1.7.5 --";
+		
 		#Losung einlesen
-		$losungen = new HerrnhuterLosungenPlugin_Xml();
+		
+        $losungen = new HerrnhuterLosungenPlugin_Xml();
 		$verseFuerHeute = $losungen->getVerse();
 
 		#Losung ausgeben:
@@ -94,7 +97,15 @@ class Losung_Widget extends WP_Widget {
 		}
 		
 		#Copyright ausgeben
-		echo '<p class="losung-copy"><a href="http://www.herrnhuter.de" target="_blank" title="Evangelische Br&uuml;der-Unit&auml;t">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeine</a> <br> <a href="https://www.losungen.de" target="_blank" title="www.losungen.de">Weitere Informationen finden Sie hier</a></p>';
+		
+		?>
+		
+		<p class="losung-copy">
+		<a href="http://www.herrnhuter.de" target="_blank" title="Evangelische Br&uuml;der-Unit&auml;t">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeine</a> <br>
+		<a href="https://www.losungen.de" target="_blank" title="www.losungen.de">Weitere Informationen finden Sie hier</a>
+		</p>
+		
+		<?php
 	}
 	
 	function showBibleVers($text, $vers, $options = array())
