@@ -29,8 +29,6 @@ Requirements:
 This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 */
 
-//@include_once(dirname(__FILE__) . '/xml_automatic_updater.php');
-
 class HerrnhuterLosungenPlugin_Xml
 {
 	public function __construct()
@@ -61,7 +59,7 @@ class HerrnhuterLosungenPlugin_Xml
 		{
 			if (WP_DEBUG)
 				echo 'File not found: ' . $filename;
-			throw new Exception("<p>Die Losungensdatei von diesem Jahr konnte nicht gefunden werden. Weitere Infos in der ReadMe.md des Plugins.</p>");
+			throw new Exception("<p>Die diesj&auml;rige Datei mit den Losungen konnte nicht gefunden werden. Weitere Infos in der ReadMe.md des Plugins.</p>");
 		}
 		
 		$xml = simplexml_load_file($filename);
@@ -104,7 +102,7 @@ class HerrnhuterLosungenPlugin_Xml
 				),
 		);
 		
-		return apply_filters('herrnuterlosung_vers', $vers, $date);
+		return apply_filters('herrnhuterlosung_vers', $vers, $date);
 	}
 	
 	public function convertTextToHtml($text)
