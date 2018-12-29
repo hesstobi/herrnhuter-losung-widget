@@ -79,7 +79,7 @@ class Losung_Widget extends WP_Widget {
 	
 	function showLosungen($showlink)
 	{
-		echo "<!-- Losung Widget Version 1.7.5 --";
+		echo "<!-- Losung Widget Version 1.7.5 -->";
 		
 		#Losung einlesen
 		
