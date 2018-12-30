@@ -2,7 +2,7 @@ Herrnhuter Losung
 =================
 
 Aktuelle Version: 1.7.6 (vom 29.12.2018)
-
+=======
 *Donate link*: http://www.lutherkirchgemeinde-radebeul.de/<br>
 *Tags*: deutsch, german, bible, Bibel, daily, täglich<br>
 *Requires at least*: 2.8<br>
@@ -157,13 +157,13 @@ Changelog
 ### 1.7.5
 * README.md überarbeitet
 * Nutzungsbedingungen (PDF) der Herrnhuter Brüdergemeine auf Januar 2017 aktualisiert.
-* Losungen für 2018 aus Lizenzgründen entfernt.
-* Losungen 2019 müssen über update oder manuell installiert werden
 * Losungen werden von http://www.losungen.de installiert. Download URL angepasst.
 * Schreibfehler korriguiert
 * Formatierungen angepasst
 * Code stellenweise überarbeitet
 * Copyright Links an Bedingungen Herrnhuter Brüdergemeine angepasst
+* Losungen für 2019 hinzugefügt (thanks @pavog)
+* Update Lings (thanks @Byggvir)
 
 ### 1.7.4
 * Losungen für 2018 hinzugefügt
