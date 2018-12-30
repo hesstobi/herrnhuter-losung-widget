@@ -45,6 +45,8 @@ This plugin requires WordPress >= 2.8 and tested with PHP Interpreter >= 5.2.10
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+define( "HHL", 'HHL_' );
+
 require_once (dirname(__FILE__) . '/lib/xmlfilereader.php');
 require_once (dirname(__FILE__) . '/lib/xml_automatic_updater.php');
 
@@ -162,8 +164,8 @@ class Losung_Widget extends WP_Widget {
 
 function add_herrnhuter_stylesheet( )
  {
-  wp_register_style( UIP . 'StyleSheets', plugins_url( 'css/styles.css', __FILE__ ) );
-  wp_enqueue_style( UIP . 'StyleSheets' );
+  wp_register_style( HHL . 'StyleSheets', plugins_url( 'css/styles.css', __FILE__ ) );
+  wp_enqueue_style( HHL . 'StyleSheets' );
  }
 
 // Add the EVTStyleSheets
