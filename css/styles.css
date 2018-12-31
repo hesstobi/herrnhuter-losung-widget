@@ -7,7 +7,8 @@ Date: 29.12.2018
 Version 2019.1
 */
 
-.losung-text {margin-bottom:0; font-weight: bold; text-align : left;}
+.widget_losung { }
+.losung-text {margin-bottom:0; text-align : left;}
 .losung-versangabe { font-style: italic; font-size: 0.7.em; text-align : right; }
 .losung-losungstext {font-size: 1.0em; text-align: left;}
 .losung-lehrtext {font-size: 1.0em; text-align: left;}
