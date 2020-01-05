@@ -53,11 +53,7 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 
 	protected function _getDownloadUrl($date)
 	{
-		if (WP_DEBUG)
-			$url = 'http://localhost/local/Losung_%s_XML.zip';
-		else
-			$url = apply_filters('herrnhuterlosung_download_url', self::DOWNLOAD_URL);
-		return sprintf($url, (int) $date['year']);	
+		return sprintf(apply_filters('herrnhuterlosung_download_url', self::DOWNLOAD_URL), (int) $date['year']);
 	}
 	
 	public function updater_gui()
