@@ -1,20 +1,21 @@
+<?php defined( 'ABSPATH' ) or die( 'No script kiddies please!' ); ?>
 <?php if (!empty($error)) : ?>
 <div class="error">
-	<b>Herrnhuter Losung:</b><br />
+	<b>Herrnhuter Losungen:</b><br />
 	<?php echo $error; ?>
 </div>
 <?php endif; ?>
 <?php if (!empty($message)) : ?>
 <div class="updated">
-	<b>Herrnhuter Losung:</b><br />
+	<b>Herrnhuter Losungen:</b><br />
 	<?php echo $message; ?>
 </div>
 <?php endif; ?>
 <?php if ($updateAvailable) : ?>
 <div class="updated">
-	<b>Herrnhuter Losung:</b>	<br />
+	<b>Herrnhuter Losungen:</b>	<br />
 	<?php foreach ($updateAvailable as $date) : ?>
-	Die Losungen für <?php echo $date['year']; ?> können jetzt installiert werden:
+	Die Losungen für <?php echo $date['year']; ?> können installiert werden:
 	<br /> <br />
 	<form action="" method="post">
 	<input type="hidden" name="action" value="updatelosungen" />

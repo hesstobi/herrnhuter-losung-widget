@@ -1,33 +1,50 @@
 Herrnhuter Losung
 =================
 
-Aktuelle Version: 1.7.5 (vom 29.12.2018)
-
+Aktuelle Version: 1.7.6 (vom 29.12.2018)
+=======
 *Donate link*: http://www.lutherkirchgemeinde-radebeul.de/<br>
 *Tags*: deutsch, german, bible, Bibel, daily, täglich<br>
 *Requires at least*: 2.8<br>
-*Tested up to*: 4.7<br>
+*Tested up to*: 5.0.2<br>
 *License*: GPLv2 or later<br>
 *License URI*: http://www.gnu.org/licenses/gpl-2.0.html<br>
 
-Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeine in Deutsch als Widget an der Sidebar an.
+Das Plugin zeigt die Losung des Tages der Herrnhuter Brüdergemeine in einer Seitenliste oder im Fußbereich an.
 
 Description
 -----------
 
-Das Plugin zeigt die tägliche Losung der Herrnhuter Brüdergemeine in Deutsch als Widget an der Sidebar an, mit je einen Vers aus dem alten und dem neuen Testament. Aus lizenzrechtlichen Gründen fehlt der Liedvers bzw. das Gebet.
+Das Plugin zeigt die Losung der Tages der Herrnhuter Brüdergemeine in Deutsch als Widget in einer Seitenleiste oder im Fußbereich an. - Die Anzeige der Losungstexte besteht immer aus beiden Bibelversen, dem alttestamentlichen Text
+(der Losungsvers) und dem neutestamentlichen Vers (dem Lehrtext).
+
+Aus lizenzrechtlichen Gründen fehlt der Liedvers bzw. das Gebet.
 
 *Die Losungen gibt es seit 1728. Für jeden Tag zieht die Herrnhuter Brüdergemeine einen Vers aus dem alten Testament der Bibel, dazu wird eine Vers aus dem neuen Testament und ein sowie ein Liedvers oder ein Gebet auswählt. Die Losungen verbinden Menschen aus verschiedenen Konfessionen und mit unterschiedlicher Frömmigkeit.*
 
 *Weiter Informationen gibt es unter: [losungen.de](http://www.losungen.de/ "Offizelle Webseiter der Herrnhuter Losungen")*
 
-### Auszug der Lizenzbedingungen:	
-"Auf Internet-Seiten, die auch kommerziellen Zwecken dienen, sowie in Software, die entgeltlich
-angeboten wird, dürfen die Losungen nicht verwendet werden. Gleiches gilt für Internetseiten und
-Softwareprogramme deren Inhalt geeignet ist, das Ansehen der Evangelischen Kirche und der
-Evangelischen Brüder-Unität - Herrnhuter Brüdergemeine herabzusetzen. Anwendungen außerhalb dieser Nutzungsbedingungen bedürfen einer gesonderten Vereinbarung mit der Evangelischen Brüder-Unität – Herrnhuter Brüdergemeine."
+### Auszug der Lizenzbedingungen der Herrnhuter Brüdergemeine für die Nutzng der Losungen
 
-(Diese Bedingungen gelten für die beigelegte XML-Datei, die die Losungen enthält. Das Wordpress-Plugin ist unabhängig davon unter "GPLv2 or later" lizenziert.)
+*Diese Bedingungen gelten für die beigelegte XML-Datei, die die Losungen enthält. Das Wordpress-Plugin ist unabhängig davon unter "GPLv2 or later" lizenziert.*
+
+- Inhaberin Urheberrechts *(der Losungen)* ist die Evangelische Brüder-Unität – Herrnhuter Brüdergemeine.
+Die Bibeltexte aus der Lutherbibel, revidiert 2017, und aus der Lutherbibel, revidierte Texte 1984, durchgesehene
+Ausgabe in neuer Rechtschreibung, unterliegt dem Copyright der Deutschen Bibelgesellschaft, Stuttgart.
+
+- Auf Internet-Seiten, die auch kommerziellen Zwecken dienen, sowie in Software, die entgeltlich angeboten wird, dürfen die Losungen nicht verwendet werden. Gleiches gilt für Internetseiten und Softwareprogramme deren Inhalt geeignet ist, das Ansehen der Evangelischen Kirche und der Evangelischen Brüder-Unität - Herrnhuter Brüdergemeine herabzusetzen. Anwendungen außerhalb dieser Nutzungsbedingungen bedürfen einer gesonderten Vereinbarung mit der Evangelischen Brüder-Unität – Herrnhuter Brüdergemeine.
+
+- Die Anzeige der Losungstexte besteht immer aus beiden Bibelversen, dem alttestamentlichen Text
+(der Losungsvers) und dem neutestamentlichen Vers (dem Lehrtext).
+
+- Bei Fertigstellung einer Internetveröffentlichung ist ein entsprechender Link oder im Falle eines
+Losungs-Freeware-Programms eine Kopie bzw. der Downloadlink an die unten genannte Adresse der
+Evangelischen Brüder-Unität – Herrnhuter Brüdergemeine zu übersenden.
+
+- Bei Fragen und Anregungen, wenden Sie sich bitte an den Herausgeber:
+Evangelische Brüder-Unität Herrnhut, Postfach 21, 02745 Herrnhut, Telefon 035873-487-0,
+Fax: 035873-487-99, E-Mail: support@losungen.de, Internet: www.herrnhuter.de
+
 
 ### Technische Details
 
@@ -70,7 +87,7 @@ Damit wird der Losungstext und der Lehrtext fett gedruckt und das Copyright ist 
 
 
 Update des Plugins
-------
+------------------
 
 ### Manuell
 
@@ -82,6 +99,11 @@ Update des Plugins
 1. Lade die aktuelle ZIP-Datei rechts herunter.
 2. Ersetze die bestehende Plugin-Dateien auf dem FTP-Server mit dem Inhalt der ZIP-Datei.
 
+
+### Update über git
+
+1. Führe **git pull** im plugin-Verzeichnis aus
+
 ### Über Wordpress-Aktualisierungen
 
 *(Diese Funktion ist derzeit deaktiviert.)*
@@ -89,13 +111,16 @@ Update des Plugins
 1. Installiere das Update.
 2. Ggf. musst du das Plugin erneut aktivieren und überprüfen, ob das Widget noch existiert.
 
+
+
 Update der Losungen
-------
+-------------------
+
 Das Plugin an sich stellt nur die technische Hülle für die Einbindung der Losungen in eine Webseite bereit. Die Losungen selber werden dabei aus einer XML-Datei gelesen. Diese enthält immer die Losungen für ein komplettes Jahr. Herunterladen kann man diese immer hier: http://www.losungen.de/download/ (als Format "XML" auswählen).
 
-Die XML-Datei muss folgendem Namensschema genügen: "losungen" + [jahr] + ".xml" (Bsp.: "losungen2016.xml").
+ZIP-Datei entpacken, die enthaltenen Losungen *"Losungen FREE 20nn.xml"* in den Hauptordner des Plugins legen und nahc folgendem Namensschema umbenennen.
 
-Diese Datei einfach in den Hauptordner des Plugins legen.
+Die XML-Datei muss folgendem Namensschema genügen: "losungen" + [jahr] + ".xml" (Bsp.: "losungen2016.xml").
 
 Frequently Asked Questions
 --------------------------
@@ -108,8 +133,6 @@ Das Widget benötigt PHP5 das es die Funktionen der php-Klasse simplexml verwend
 
 Immer gerne! Am besten hier als Pull Request.
 
-Geplante Verbesserungen (irgendwann):
-* Lade die losungen.xml direkt von losungen.de herunter, falls die aktuelle XML-Datei nicht gefunden werden kann. Auf diese Weise müsste ich nicht mehr jährlich ein Update herausbringen.
 
 Screenshots
 -----------
@@ -125,7 +148,20 @@ Screenshots
 
 Changelog
 ---------
+### 1.7.6
+* herrnhuter.php umbenannt in index.php
+* Sicherheitsabfrage gegen direkte Aufrufe eingefügt
+* Formatierungen
+* CSS eingefügt
+ 
 ### 1.7.5
+* README.md überarbeitet
+* Nutzungsbedingungen (PDF) der Herrnhuter Brüdergemeine auf Januar 2017 aktualisiert.
+* Losungen werden von http://www.losungen.de installiert. Download URL angepasst.
+* Schreibfehler korriguiert
+* Formatierungen angepasst
+* Code stellenweise überarbeitet
+* Copyright Links an Bedingungen Herrnhuter Brüdergemeine angepasst
 * Losungen für 2019 hinzugefügt (thanks @pavog)
 * Update Lings (thanks @Byggvir)
 

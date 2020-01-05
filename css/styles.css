@@ -1,0 +1,16 @@
+@charset UTF-8;
+/*
+Styles for Plugin herrnhuter_losungen_widget
+
+Author: Thomas Arend
+Date: 29.12.2018
+Version 2019.1
+*/
+
+.widget_losung { }
+.losung-text {margin-bottom:0; text-align : left;}
+.losung-versangabe { font-style: italic; font-size: 0.7.em; text-align : right; }
+.losung-losungstext {font-size: 1.0em; text-align: left;}
+.losung-lehrtext {font-size: 1.0em; text-align: left;}
+.losung-copy {font-size: 0.7em; text-align: left;}
+.losung-losungseinleitung {font-weight: bold;}

@@ -1,4 +1,7 @@
 <?php 
+
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
 $defaults = array(
 	'css' => 'losung',
 	'showlink' => true

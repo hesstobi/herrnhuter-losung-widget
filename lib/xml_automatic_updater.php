@@ -23,12 +23,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   *
   */
  
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
  
 require_once(ABSPATH . '/wp-admin/includes/file.php');
 
 class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 {
-	const DOWNLOAD_URL = 'https://www.losungen.de/download/Losung_%s_XML.zip';
+	const DOWNLOAD_URL = 'https://www.losungen.de/fileadmin/media-losungen/download/Losung_%s_XML.zip';
 	
 	protected $alternate_dir;
 	
@@ -90,11 +91,11 @@ class HerrnhuterLosungenPlugin_Xml_Automatic_Update
 		$download_url = $this->_getDownloadUrl($date);    
 		$this->_setup_WP_Filesystem($download_url);
 		
-		// 1) Downlaod File
+		// 1) Download File
         $tmpFile = download_url($download_url);
         if (is_wp_error($tmpFile))
          	return $tmpFile;       
-        
+
         // 2) Unzip to tempDir
         $tempDir = $this->alternate_dir . '/update-losungen-' . time() . '/';
         if (!is_dir($tempDir))
