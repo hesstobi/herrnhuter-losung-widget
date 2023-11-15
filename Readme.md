@@ -116,9 +116,9 @@ Update des Plugins
 Update der Losungen
 -------------------
 
-Das Plugin an sich stellt nur die technische Hülle für die Einbindung der Losungen in eine Webseite bereit. Die Losungen selber werden dabei aus einer XML-Datei gelesen. Diese enthält immer die Losungen für ein komplettes Jahr. Herunterladen kann man diese immer hier: http://www.losungen.de/download/ (als Format "XML" auswählen).
+Das Plugin an sich stellt nur die technische Hülle für die Einbindung der Losungen in eine Webseite bereit. Die Losungen selber werden dabei aus einer XML-Datei gelesen. Diese enthält immer die Losungen für ein komplettes Jahr. Herunterladen kann man diese immer hier: https://www.losungen.de/digital/daten/ (als Format "XML" auswählen).
 
-ZIP-Datei entpacken, die enthaltenen Losungen *"Losungen FREE 20nn.xml"* in den Hauptordner des Plugins legen und nahc folgendem Namensschema umbenennen.
+ZIP-Datei entpacken, die enthaltenen Losungen *"Losungen FREE 20nn.xml"* in den Hauptordner des Plugins legen und nach folgendem Namensschema umbenennen.
 
 Die XML-Datei muss folgendem Namensschema genügen: "losungen" + [jahr] + ".xml" (Bsp.: "losungen2016.xml").
 
